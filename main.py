@@ -1,0 +1,174 @@
+#!/usr/bin/env python3
+"""Entry-level SWE job scraper: discover ATS, fetch jobs, filter, export to Excel."""
+
+import os
+from pathlib import Path as _Path
+
+# Load .env before any imports that read os.environ
+_env_file = _Path(__file__).resolve().parent / ".env"
+if _env_file.exists():
+    for line in _env_file.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, _, val = line.partition("=")
+            key, val = key.strip(), val.strip().strip("'\"")
+            if key and val:
+                os.environ.setdefault(key, val)
+
+import argparse
+import logging
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+
+from src.ats_ashby import fetch_jobs as ashby_fetch_jobs
+from src.ats_greenhouse import fetch_jobs as greenhouse_fetch_jobs
+from src.ats_lever import fetch_jobs as lever_fetch_jobs
+from src.discovery import discover_ats, load_cache, save_cache
+from src.filters import is_entry_level_swe
+from src.io_export import export_to_excel, load_existing_jobs
+from src.search import get_search_client
+
+logging.basicConfig(level=logging.INFO, format="%(message)s")
+logger = logging.getLogger(__name__)
+
+COMPANIES_PATH = Path("data/companies.txt")
+DEFAULT_OUT = "output/entry_roles.xlsx"
+
+
+def load_companies(path: str) -> list[str]:
+    """Read company names, skip blank lines and the EMPLOYER_NAME header."""
+    companies: list[str] = []
+    if not Path(path).exists():
+        logger.error("Companies file not found: %s", path)
+        return companies
+    seen: set[str] = set()
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            name = line.strip()
+            if not name or name.upper() == "EMPLOYER_NAME":
+                continue
+            key = name.upper()
+            if key in seen:
+                continue          # skip duplicates
+            seen.add(key)
+            companies.append(name)
+    return companies
+
+
+def _fetch_jobs_for_board(company: str, ats: str, key: str) -> list[dict]:
+    if ats == "greenhouse":
+        return greenhouse_fetch_jobs(company, key)
+    elif ats == "lever":
+        return lever_fetch_jobs(company, key)
+    else:
+        return ashby_fetch_jobs(company, key)
+
+
+def _process_company(
+    company: str,
+    client,
+    cache: dict,
+    cache_lock: threading.Lock,
+    refresh: bool,
+    use_search_fallback: bool,
+) -> list[dict]:
+    """Discover ATS, fetch jobs, and filter — returns matching jobs."""
+    # Check cache first (thread-safe read)
+    with cache_lock:
+        if not refresh and company in cache:
+            board = cache[company]
+        else:
+            board = None
+
+    if board is None:
+        board = discover_ats(company, client, use_search_fallback=use_search_fallback)
+        with cache_lock:
+            cache[company] = board
+            save_cache(cache)
+
+    ats, key = board.get("ats"), board.get("key")
+    if not ats or not key:
+        logger.info("[SKIP] No ATS found for %s", company)
+        return []
+
+    logger.info("[FOUND] %s → %s / %s", company, ats, key)
+    jobs = _fetch_jobs_for_board(company, ats, key)
+    logger.info("[%s] Fetched %d jobs", company, len(jobs))
+    passed = [j for j in jobs if is_entry_level_swe(j)[0]]
+    logger.info("[%s] %d passed filter", company, len(passed))
+    return passed
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Entry-level SWE job scraper")
+    parser.add_argument("--max-companies", type=int, default=None,
+                        help="Cap the number of companies processed")
+    parser.add_argument("--concurrency", type=int, default=10,
+                        help="Number of companies to probe in parallel (default: 10)")
+    parser.add_argument("--out", type=str, default=DEFAULT_OUT)
+    parser.add_argument("--refresh-discovery", action="store_true",
+                        help="Ignore the discovery cache and re-probe every company")
+    parser.add_argument(
+        "--search-fallback",
+        action="store_true",
+        help="Enable search-based ATS discovery as fallback when probing fails. "
+             "Requires BING_API_KEY; DuckDuckGo fallback is rate-limited.",
+    )
+    args = parser.parse_args()
+
+    companies = load_companies(str(COMPANIES_PATH))
+    if args.max_companies is not None:
+        companies = companies[: args.max_companies]
+    if not companies:
+        logger.info("No companies to process")
+        return
+
+    os.makedirs("data", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
+
+    client = get_search_client()
+    cache = load_cache()
+    cache_lock = threading.Lock()
+
+    # Load jobs already saved in the output file so we can deduplicate
+    existing_jobs = load_existing_jobs(args.out)
+    seen_urls: set[str] = {j.get("url", "") for j in existing_jobs if j.get("url")}
+    logger.info("Loaded %d existing jobs from %s (will skip duplicates)",
+                len(existing_jobs), args.out)
+
+    new_jobs: list[dict] = []
+
+    logger.info("Processing %d companies (concurrency=%d)…",
+                len(companies), args.concurrency)
+
+    with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+        futures = {
+            pool.submit(
+                _process_company,
+                company, client, cache, cache_lock,
+                args.refresh_discovery, args.search_fallback,
+            ): company
+            for company in companies
+        }
+        for future in as_completed(futures):
+            company = futures[future]
+            try:
+                jobs = future.result()
+                for job in jobs:
+                    url = job.get("url", "")
+                    if url and url in seen_urls:
+                        continue          # already in Excel — skip
+                    seen_urls.add(url)
+                    new_jobs.append(job)
+            except Exception as exc:
+                logger.warning("[ERROR] %s raised %s", company, exc)
+
+    # Write existing + new jobs together so the file is always complete
+    all_jobs = existing_jobs + new_jobs
+    export_to_excel(all_jobs, args.out)
+    print(f"\nDone. {len(new_jobs)} new jobs added → {len(all_jobs)} total in {args.out}")
+
+
+if __name__ == "__main__":
+    main()
