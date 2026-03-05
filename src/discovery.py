@@ -1,4 +1,5 @@
-"""Automatic ATS detection (Greenhouse, Lever, Ashby) via direct probing and search."""
+"""Automatic ATS detection (Greenhouse, Lever, Ashby, Workday, SmartRecruiters)
+via direct probing and search."""
 
 import json
 import logging
@@ -32,6 +33,12 @@ LEVER_PATTERNS = [
 ASHBY_PATTERNS = [
     re.compile(r"jobs\.ashbyhq\.com/([^/?#\s]+)", re.I),
 ]
+WORKDAY_PATTERN = re.compile(
+    r"https?://([a-z0-9-]+)\.wd(\d+)\.myworkdayjobs\.com/([^?#\s\"']+)", re.I
+)
+SMARTRECRUITERS_PATTERNS = [
+    re.compile(r"jobs\.smartrecruiters\.com/([^/?#\s\"']+)", re.I),
+]
 
 QUERIES = [
     ("greenhouse", "{company} careers greenhouse"),
@@ -52,6 +59,8 @@ _LEGAL_SUFFIXES = [
     " technologies", " technology", " solutions", " services",
     " international", " worldwide",
 ]
+
+_SMARTRECRUITERS_SLUG_DENYLIST = {"all-jobs", "jobs", "search"}
 
 
 def _generate_slugs(company: str) -> list[str]:
@@ -128,6 +137,23 @@ def _probe_ashby(slug: str) -> bool:
     return False
 
 
+def _probe_smartrecruiters(slug: str) -> bool:
+    """Return True if a live SmartRecruiters board exists for this slug."""
+    url = f"https://api.smartrecruiters.com/v1/companies/{slug}/postings"
+    try:
+        resp = _requests.get(
+            url,
+            params={"status": "PUBLIC", "limit": 1},
+            timeout=_PROBE_TIMEOUT,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            return bool(data.get("content"))
+    except Exception:
+        pass
+    return False
+
+
 def _probe_all_ats(company: str) -> dict:
     """
     Fire all ATS probes concurrently and return the first hit.
@@ -142,11 +168,12 @@ def _probe_all_ats(company: str) -> dict:
         "greenhouse": _probe_greenhouse,
         "lever": _probe_lever,
         "ashby": _probe_ashby,
+        "smartrecruiters": _probe_smartrecruiters,
     }
     tasks: list[tuple[str, str]] = [
         (ats_name, slug)
         for slug in slugs
-        for ats_name in ("greenhouse", "lever", "ashby")
+        for ats_name in ("greenhouse", "lever", "ashby", "smartrecruiters")
     ]
 
     # Wall-clock cap = read timeout + 2 s buffer
@@ -203,6 +230,24 @@ def _extract_key_from_urls(urls: list[str], ats: str) -> str | None:
 def _extract_ats_from_urls(urls: list[str]) -> dict | None:
     """Scan URLs for any ATS pattern; return first match as {ats, key} or None."""
     for url in urls:
+        # Check Workday
+        m = WORKDAY_PATTERN.search(url)
+        if m:
+            subdomain = m.group(1).lower()
+            instance = int(m.group(2))
+            board = m.group(3).split("/")[0]
+            key = json.dumps({"subdomain": subdomain, "instance": instance, "board": board})
+            return {"ats": "workday", "key": key}
+
+        # Check SmartRecruiters
+        for pattern in SMARTRECRUITERS_PATTERNS:
+            m = pattern.search(url)
+            if m:
+                slug = m.group(1).strip()
+                if slug.lower() not in _SMARTRECRUITERS_SLUG_DENYLIST:
+                    return {"ats": "smartrecruiters", "key": slug}
+
+        # Check Greenhouse, Lever, Ashby
         for ats, patterns in [
             ("greenhouse", GREENHOUSE_PATTERNS),
             ("lever", LEVER_PATTERNS),
@@ -254,6 +299,23 @@ def _discover_via_careers_page(company: str, client: SearchClient) -> dict:
     return {"ats": None, "key": None}
 
 
+def _discover_via_playwright(company: str, client: SearchClient) -> dict:
+    """Search for careers URL and scrape it with Playwright."""
+    from .ats_playwright import scrape_careers_page  # lazy import — avoids circular dep
+    for query in [f"{company} careers", f"{company} jobs"]:
+        urls = client.search(query)
+        for careers_url in urls[:3]:
+            try:
+                result = scrape_careers_page(company, careers_url)
+                if result.get("ats"):
+                    return result
+            except Exception as e:
+                logger.debug(
+                    "[%s] Playwright discovery error for %s: %s", company, careers_url, e
+                )
+    return {"ats": None, "key": None}
+
+
 def _discover_via_search(company: str, client: SearchClient) -> dict:
     """Run search queries and extract ATS key from result URLs."""
     for ats, template in QUERIES:
@@ -265,13 +327,19 @@ def _discover_via_search(company: str, client: SearchClient) -> dict:
     return {"ats": None, "key": None}
 
 
-def discover_ats(company: str, client: SearchClient, use_search_fallback: bool = False) -> dict:
+def discover_ats(
+    company: str,
+    client: SearchClient,
+    use_search_fallback: bool = False,
+    use_playwright: bool = False,
+) -> dict:
     """
     Discover ATS for a company using strategies in order:
       1. Direct URL probing (no API key required, faster, more reliable).
       2. Careers page fetch: search for "{company} careers", fetch the page,
-         parse HTML for links to Greenhouse/Lever/Ashby, extract board key.
-      3. Search-based discovery (optional; runs when use_search_fallback=True).
+         parse HTML for links to any supported ATS, extract board key.
+      3. Playwright fallback (optional; runs when use_playwright=True).
+      4. Search-based discovery (optional; runs when use_search_fallback=True).
     """
     result = _probe_all_ats(company)
     if result["ats"]:
@@ -279,6 +347,10 @@ def discover_ats(company: str, client: SearchClient, use_search_fallback: bool =
     result = _discover_via_careers_page(company, client)
     if result["ats"]:
         return result
+    if use_playwright:
+        result = _discover_via_playwright(company, client)
+        if result["ats"]:
+            return result
     if use_search_fallback:
         return _discover_via_search(company, client)
     return {"ats": None, "key": None}

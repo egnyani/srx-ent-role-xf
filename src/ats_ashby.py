@@ -4,6 +4,7 @@ import logging
 
 from bs4 import BeautifulSoup
 
+from .date_utils import iso_to_date_str
 from .http_client import FetchError, post
 
 logger = logging.getLogger(__name__)
@@ -38,5 +39,6 @@ def fetch_jobs(company_name: str, company_key: str) -> list[dict]:
             "source": "ashby",
             "description_text": description_text,
             "updated_at": job.get("publishedDate", ""),
+            "date_posted": iso_to_date_str(job.get("publishedDate", "")),
         })
     return jobs

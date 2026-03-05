@@ -2,6 +2,7 @@
 
 import logging
 
+from .date_utils import iso_to_date_str
 from .http_client import FetchError, get
 
 logger = logging.getLogger(__name__)
@@ -34,5 +35,6 @@ def fetch_jobs(company_name: str, board_key: str) -> list[dict]:
             "source": "greenhouse",
             "description_text": job.get("content", ""),
             "updated_at": job.get("updated_at", ""),
+            "date_posted": iso_to_date_str(job.get("first_published") or job.get("updated_at", "")),
         })
     return jobs

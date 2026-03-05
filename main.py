@@ -24,6 +24,9 @@ from pathlib import Path
 from src.ats_ashby import fetch_jobs as ashby_fetch_jobs
 from src.ats_greenhouse import fetch_jobs as greenhouse_fetch_jobs
 from src.ats_lever import fetch_jobs as lever_fetch_jobs
+from src.ats_playwright import shutdown_browser
+from src.ats_smartrecruiters import fetch_jobs as smartrecruiters_fetch_jobs
+from src.ats_workday import fetch_jobs as workday_fetch_jobs
 from src.discovery import discover_ats, load_cache, save_cache
 from src.filters import is_entry_level_swe
 from src.io_export import export_to_excel, load_existing_jobs
@@ -56,13 +59,20 @@ def load_companies(path: str) -> list[str]:
     return companies
 
 
-def _fetch_jobs_for_board(company: str, ats: str, key: str) -> list[dict]:
+def _fetch_jobs_for_board(company: str, ats: str, key: str, board: dict) -> list[dict]:
     if ats == "greenhouse":
         return greenhouse_fetch_jobs(company, key)
     elif ats == "lever":
         return lever_fetch_jobs(company, key)
-    else:
+    elif ats == "ashby":
         return ashby_fetch_jobs(company, key)
+    elif ats == "workday":
+        return workday_fetch_jobs(company, key)
+    elif ats == "smartrecruiters":
+        return smartrecruiters_fetch_jobs(company, key)
+    elif ats == "careers_page":
+        return board.get("jobs", [])
+    return []
 
 
 def _process_company(
@@ -72,6 +82,7 @@ def _process_company(
     cache_lock: threading.Lock,
     refresh: bool,
     use_search_fallback: bool,
+    use_playwright: bool = False,
 ) -> list[dict]:
     """Discover ATS, fetch jobs, and filter — returns matching jobs."""
     # Check cache first (thread-safe read)
@@ -81,10 +92,17 @@ def _process_company(
         else:
             board = None
 
-    if board is None:
-        board = discover_ats(company, client, use_search_fallback=use_search_fallback)
+    # Re-discover if: no cache, or cached as careers_page (needs Playwright re-scrape)
+    if board is None or (board.get("ats") == "careers_page" and use_playwright):
+        board = discover_ats(
+            company, client,
+            use_search_fallback=use_search_fallback,
+            use_playwright=use_playwright,
+        )
+        # Cache without the 'jobs' payload so cached entries stay small
+        board_to_cache = {k: v for k, v in board.items() if k != "jobs"}
         with cache_lock:
-            cache[company] = board
+            cache[company] = board_to_cache
             save_cache(cache)
 
     ats, key = board.get("ats"), board.get("key")
@@ -93,7 +111,7 @@ def _process_company(
         return []
 
     logger.info("[FOUND] %s → %s / %s", company, ats, key)
-    jobs = _fetch_jobs_for_board(company, ats, key)
+    jobs = _fetch_jobs_for_board(company, ats, key, board)
     logger.info("[%s] Fetched %d jobs", company, len(jobs))
     passed = [j for j in jobs if is_entry_level_swe(j)[0]]
     logger.info("[%s] %d passed filter", company, len(passed))
@@ -114,6 +132,12 @@ def main() -> None:
         action="store_true",
         help="Enable search-based ATS discovery as fallback when probing fails. "
              "Requires BING_API_KEY; DuckDuckGo fallback is rate-limited.",
+    )
+    parser.add_argument(
+        "--playwright",
+        action="store_true",
+        help="Enable Playwright-based fallback scraping for companies with no known ATS. "
+             "Requires: pip install playwright && playwright install chromium",
     )
     args = parser.parse_args()
 
@@ -142,27 +166,30 @@ def main() -> None:
     logger.info("Processing %d companies (concurrency=%d)…",
                 len(companies), args.concurrency)
 
-    with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
-        futures = {
-            pool.submit(
-                _process_company,
-                company, client, cache, cache_lock,
-                args.refresh_discovery, args.search_fallback,
-            ): company
-            for company in companies
-        }
-        for future in as_completed(futures):
-            company = futures[future]
-            try:
-                jobs = future.result()
-                for job in jobs:
-                    url = job.get("url", "")
-                    if url and url in seen_urls:
-                        continue          # already in Excel — skip
-                    seen_urls.add(url)
-                    new_jobs.append(job)
-            except Exception as exc:
-                logger.warning("[ERROR] %s raised %s", company, exc)
+    try:
+        with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+            futures = {
+                pool.submit(
+                    _process_company,
+                    company, client, cache, cache_lock,
+                    args.refresh_discovery, args.search_fallback, args.playwright,
+                ): company
+                for company in companies
+            }
+            for future in as_completed(futures):
+                company = futures[future]
+                try:
+                    jobs = future.result()
+                    for job in jobs:
+                        url = job.get("url", "")
+                        if url and url in seen_urls:
+                            continue          # already in Excel — skip
+                        seen_urls.add(url)
+                        new_jobs.append(job)
+                except Exception as exc:
+                    logger.warning("[ERROR] %s raised %s", company, exc)
+    finally:
+        shutdown_browser()
 
     # Write existing + new jobs together so the file is always complete
     all_jobs = existing_jobs + new_jobs

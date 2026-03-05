@@ -5,7 +5,7 @@ from pathlib import Path
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Font
 
-COLUMNS = ["company_name", "job_title", "location", "url", "source"]
+COLUMNS = ["company_name", "job_title", "location", "url", "date_posted", "source"]
 MAX_WIDTH = 60
 PADDING = 4
 
@@ -36,6 +36,8 @@ def load_existing_jobs(path: str) -> list[dict]:
 
 
 def export_to_excel(jobs: list[dict], path: str) -> None:
+    # Sort newest-first by date_posted; empty/missing dates go to the bottom
+    jobs = sorted(jobs, key=lambda j: j.get("date_posted") or "", reverse=True)
     parent = os.path.dirname(path) or "."
     os.makedirs(parent, exist_ok=True)
     wb = Workbook()

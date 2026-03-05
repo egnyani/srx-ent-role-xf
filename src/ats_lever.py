@@ -2,6 +2,7 @@
 
 import logging
 
+from .date_utils import unix_ms_to_date_str
 from .http_client import FetchError, get
 
 logger = logging.getLogger(__name__)
@@ -33,5 +34,6 @@ def fetch_jobs(company_name: str, account: str) -> list[dict]:
             "source": "lever",
             "description_text": posting.get("descriptionPlain", ""),
             "updated_at": str(posting.get("createdAt", "")),
+            "date_posted": unix_ms_to_date_str(posting.get("createdAt")),
         })
     return jobs
