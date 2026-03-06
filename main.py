@@ -18,6 +18,7 @@ if _env_file.exists():
 import argparse
 import logging
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -77,6 +78,14 @@ def _fetch_jobs_for_board(company: str, ats: str, key: str, board: dict) -> list
     return []
 
 
+def _is_recently_fetched(board: dict, max_age_hours: float) -> bool:
+    """Return True if jobs were fetched for this company within max_age_hours."""
+    last = board.get("last_fetched")
+    if not last:
+        return False
+    return (time.time() - last) < max_age_hours * 3600
+
+
 def _process_company(
     company: str,
     client,
@@ -85,6 +94,7 @@ def _process_company(
     refresh: bool,
     use_search_fallback: bool,
     use_playwright: bool = False,
+    max_age_hours: float = 4.0,
 ) -> list[dict]:
     """Discover ATS, fetch jobs, and filter — returns matching jobs."""
     # Check cache first (thread-safe read)
@@ -93,6 +103,11 @@ def _process_company(
             board = cache[company]
         else:
             board = None
+
+    # Skip companies fetched very recently — saves time on frequent runs
+    if not refresh and board and _is_recently_fetched(board, max_age_hours):
+        logger.debug("[SKIP] %s fetched recently — skipping", company)
+        return []
 
     # Re-discover if: no cache, or cached as careers_page (needs Playwright re-scrape)
     if board is None or (board.get("ats") == "careers_page" and use_playwright):
@@ -118,6 +133,10 @@ def _process_company(
                 j for j in jobs
                 if (is_entry_level_swe(j)[0] or is_skill_match(j)[0]) and is_us_location(j)
             ]
+            # Stamp last_fetched so this company is skipped next time
+            with cache_lock:
+                cache.setdefault(company, {})["last_fetched"] = time.time()
+                save_cache(cache)
             logger.info("[%s] %d passed filter (adzuna)", company, len(passed))
             return passed
         logger.info("[SKIP] No ATS found for %s", company)
@@ -130,6 +149,10 @@ def _process_company(
         j for j in jobs
         if (is_entry_level_swe(j)[0] or is_skill_match(j)[0]) and is_us_location(j)
     ]
+    # Stamp last_fetched so this company is skipped on the next frequent run
+    with cache_lock:
+        cache.setdefault(company, {}).update({"ats": ats, "key": key, "last_fetched": time.time()})
+        save_cache(cache)
     logger.info("[%s] %d passed filter", company, len(passed))
     return passed
 
@@ -159,7 +182,12 @@ def main() -> None:
         "--notify-email",
         action="store_true",
         help="Send an email digest when new jobs are found. "
-             "Requires GMAIL_USER, GMAIL_APP_PASSWORD, and NOTIFY_EMAIL in .env",
+             "Requires RESEND_API_KEY and NOTIFY_EMAIL in .env",
+    )
+    parser.add_argument(
+        "--max-age-hours", type=float, default=4.0,
+        help="Skip companies whose jobs were fetched within this many hours (default: 4). "
+             "Set to 0 to always re-fetch every company.",
     )
     args = parser.parse_args()
 
@@ -197,6 +225,7 @@ def main() -> None:
                     args.refresh_discovery,
                     not args.no_search_fallback,   # search-fallback on by default
                     args.playwright,
+                    args.max_age_hours,
                 ): company
                 for company in companies
             }

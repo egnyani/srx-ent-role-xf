@@ -37,7 +37,7 @@ jobs:
           EOF
 
       - name: Run scraper
-        run: python main.py --notify-email
+        run: python main.py --notify-email --max-age-hours 2
 
       - name: Commit updated cache and Excel
         run: |
