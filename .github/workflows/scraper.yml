@@ -2,7 +2,7 @@ name: Entry-Level SWE Job Scraper
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 minutes, 24/7
+    - cron: "*/60 * * * *"   # every 30 minutes, 24/7
   workflow_dispatch:           # lets you trigger a manual run from GitHub UI
 
 jobs:
