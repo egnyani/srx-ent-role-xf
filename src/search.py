@@ -3,6 +3,7 @@
 import logging
 import os
 import random
+import threading
 import time
 import urllib.parse
 from abc import ABC, abstractmethod
@@ -62,13 +63,29 @@ class TavilySearchClient(SearchClient):
 
     BASE = "https://api.tavily.com/search"
 
+    # Class-level rate limiter: serialise all Tavily calls with a minimum
+    # gap between them so we don't hammer the API with concurrent requests.
+    _rate_lock = threading.Lock()
+    _last_call_ts: float = 0.0
+    MIN_INTERVAL: float = 1.0  # seconds between calls (≤1 req/s)
+
     def __init__(self) -> None:
         key = os.environ.get("TAVILY_API_KEY", "").strip()
         if not key:
             raise ValueError("TAVILY_API_KEY must be set for TavilySearchClient")
         self._key = key if key.startswith("tvly-") else f"tvly-{key}"
 
+    def _rate_limit(self) -> None:
+        """Block until at least MIN_INTERVAL has elapsed since the last call."""
+        with self._rate_lock:
+            now = time.monotonic()
+            wait = self.MIN_INTERVAL - (now - TavilySearchClient._last_call_ts)
+            if wait > 0:
+                time.sleep(wait)
+            TavilySearchClient._last_call_ts = time.monotonic()
+
     def search(self, query: str) -> list[str]:
+        self._rate_limit()
         try:
             payload = {
                 "query": query,

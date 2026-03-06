@@ -22,14 +22,16 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from src.ats_ashby import fetch_jobs as ashby_fetch_jobs
+from src.ats_adzuna import fetch_jobs as adzuna_fetch_jobs, is_configured as adzuna_configured
 from src.ats_greenhouse import fetch_jobs as greenhouse_fetch_jobs
 from src.ats_lever import fetch_jobs as lever_fetch_jobs
 from src.ats_playwright import shutdown_browser
 from src.ats_smartrecruiters import fetch_jobs as smartrecruiters_fetch_jobs
 from src.ats_workday import fetch_jobs as workday_fetch_jobs
 from src.discovery import discover_ats, load_cache, save_cache
-from src.filters import is_entry_level_swe
+from src.filters import is_entry_level_swe, is_skill_match, is_us_location
 from src.io_export import export_to_excel, load_existing_jobs
+from src.notifier import send_new_jobs_email
 from src.search import get_search_client
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -107,13 +109,27 @@ def _process_company(
 
     ats, key = board.get("ats"), board.get("key")
     if not ats or not key:
+        # No ATS discovered — fall back to Adzuna job-search API if configured
+        if adzuna_configured():
+            logger.info("[ADZUNA] No ATS found for %s — searching Adzuna", company)
+            jobs = adzuna_fetch_jobs(company)
+            logger.info("[%s] Adzuna returned %d jobs", company, len(jobs))
+            passed = [
+                j for j in jobs
+                if (is_entry_level_swe(j)[0] or is_skill_match(j)[0]) and is_us_location(j)
+            ]
+            logger.info("[%s] %d passed filter (adzuna)", company, len(passed))
+            return passed
         logger.info("[SKIP] No ATS found for %s", company)
         return []
 
     logger.info("[FOUND] %s → %s / %s", company, ats, key)
     jobs = _fetch_jobs_for_board(company, ats, key, board)
     logger.info("[%s] Fetched %d jobs", company, len(jobs))
-    passed = [j for j in jobs if is_entry_level_swe(j)[0]]
+    passed = [
+        j for j in jobs
+        if (is_entry_level_swe(j)[0] or is_skill_match(j)[0]) and is_us_location(j)
+    ]
     logger.info("[%s] %d passed filter", company, len(passed))
     return passed
 
@@ -128,16 +144,22 @@ def main() -> None:
     parser.add_argument("--refresh-discovery", action="store_true",
                         help="Ignore the discovery cache and re-probe every company")
     parser.add_argument(
-        "--search-fallback",
+        "--no-search-fallback",
         action="store_true",
-        help="Enable search-based ATS discovery as fallback when probing fails. "
-             "Requires BING_API_KEY; DuckDuckGo fallback is rate-limited.",
+        help="Disable search-based ATS discovery (enabled by default). "
+             "Uses TAVILY_API_KEY when available.",
     )
     parser.add_argument(
         "--playwright",
         action="store_true",
         help="Enable Playwright-based fallback scraping for companies with no known ATS. "
              "Requires: pip install playwright && playwright install chromium",
+    )
+    parser.add_argument(
+        "--notify-email",
+        action="store_true",
+        help="Send an email digest when new jobs are found. "
+             "Requires GMAIL_USER, GMAIL_APP_PASSWORD, and NOTIFY_EMAIL in .env",
     )
     args = parser.parse_args()
 
@@ -172,7 +194,9 @@ def main() -> None:
                 pool.submit(
                     _process_company,
                     company, client, cache, cache_lock,
-                    args.refresh_discovery, args.search_fallback, args.playwright,
+                    args.refresh_discovery,
+                    not args.no_search_fallback,   # search-fallback on by default
+                    args.playwright,
                 ): company
                 for company in companies
             }
@@ -188,6 +212,8 @@ def main() -> None:
                         new_jobs.append(job)
                 except Exception as exc:
                     logger.warning("[ERROR] %s raised %s", company, exc)
+    except KeyboardInterrupt:
+        logger.info("\n[INTERRUPTED] Saving %d jobs collected so far…", len(new_jobs))
     finally:
         shutdown_browser()
 
@@ -195,6 +221,10 @@ def main() -> None:
     all_jobs = existing_jobs + new_jobs
     export_to_excel(all_jobs, args.out)
     print(f"\nDone. {len(new_jobs)} new jobs added → {len(all_jobs)} total in {args.out}")
+
+    # Email digest — only fires when --notify-email is set and new jobs were found
+    if args.notify_email and new_jobs:
+        send_new_jobs_email(new_jobs, len(all_jobs), args.out)
 
 
 if __name__ == "__main__":
