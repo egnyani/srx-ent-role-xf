@@ -19,6 +19,7 @@ import argparse
 import logging
 import threading
 import time
+from datetime import datetime, timedelta
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -251,9 +252,17 @@ def main() -> None:
     export_to_excel(all_jobs, args.out)
     print(f"\nDone. {len(new_jobs)} new jobs added → {len(all_jobs)} total in {args.out}")
 
-    # Email digest — only fires when --notify-email is set and new jobs were found
+    # Email digest — only send jobs posted within the last 30 days
     if args.notify_email and new_jobs:
-        send_new_jobs_email(new_jobs, len(all_jobs), args.out)
+        cutoff = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+        recent_jobs = [
+            j for j in new_jobs
+            if not j.get("date_posted") or j.get("date_posted", "") >= cutoff
+        ]
+        if recent_jobs:
+            send_new_jobs_email(recent_jobs, len(all_jobs), args.out)
+        else:
+            logger.info("[NOTIFY] No recent jobs (last 30 days) to email")
 
 
 if __name__ == "__main__":
