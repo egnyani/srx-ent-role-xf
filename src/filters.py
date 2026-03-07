@@ -125,10 +125,11 @@ _NON_US_SIGNALS = [
     "mexico city", "são paulo", "buenos aires", "santiago", "bogota",
     "aarhus", "dundee", "edinburgh", "glasgow", "graz", "dusseldorf",
     "lysaker", "luxembourg",
-    # Country codes used as suffixes (e.g. "Dublin, IE", "London, gb")
+    # Country codes used as suffixes (e.g. "Dublin, IE", "London, gb", "São Carlos, br")
     ", ie", ", gb", ", mx", ", no", ", dk", ", se", ", fi", ", nl",
     ", de", ", fr", ", es", ", it", ", pt", ", pl", ", at", ", ch",
-    ", be", ", in", " - in",
+    ", be", ", in", " - in", ", br", ", au", ", ca", ", nz", ", sg",
+    ", jp", ", cn", ", kr", ", il", ", ae", ", sa",
     # Region indicators
     "latam", "emea", "apac", "eastern europe", "western europe",
     # Specific patterns
@@ -198,33 +199,61 @@ def is_us_location(job: dict) -> bool:
     return True
 
 
+_NON_ENGLISH_TITLE_WORDS = {
+    # Portuguese
+    "engenheiro", "desenvolvedor", "analista", "pleno", "junior", "sênior",
+    "coordenador", "gerente", "programador",
+    # Spanish
+    "ingeniero", "desarrollador", "programador", "analista", "coordinador",
+    # French
+    "développeur", "ingénieur", "analyste",
+    # German
+    "entwickler", "ingenieur", "softwareentwickler",
+    # General non-ASCII signal
+}
+
+def _is_non_english_title(title: str) -> bool:
+    """Return True if the title is likely non-English."""
+    # Non-ASCII characters (accents, special chars)
+    try:
+        title.encode("ascii")
+    except UnicodeEncodeError:
+        return True
+    # Known non-English job words (ASCII but foreign language)
+    title_lower = title.lower()
+    return any(word in title_lower.split() for word in _NON_ENGLISH_TITLE_WORDS)
+
+
 def is_entry_level_swe(job: dict) -> tuple[bool, str]:
     """
     Returns (True, reason) if the job is likely an entry-level SWE role.
 
     Filtering logic:
-      1. Title must contain an SWE keyword.
-      2. Title must NOT contain a seniority keyword.
-      3. If the title or description contains an explicit entry-level signal,
-         that's a strong positive match.
-      4. If no explicit signal is found but steps 1 & 2 pass, the role is
-         still included — many entry-level postings simply say "Software
-         Engineer" without explicit level language.
+      1. Title must not contain non-ASCII characters (filters non-English postings).
+      2. Title must contain an SWE keyword.
+      3. Title must NOT contain a seniority keyword.
+      4. Description must not require too much experience (3+ years).
+      5. Check for explicit entry-level signals.
+      6. No seniority + SWE keyword = include (plain "Software Engineer").
     """
     title = (job.get("job_title") or "").lower()
     desc = (job.get("description_text") or "").lower()
     combined = f"{title} {desc}"
 
-    # Step 1: must have an SWE keyword in the title
+    # Step 1: reject non-English titles (e.g. "Engenheiro de Software Pleno")
+    if _is_non_english_title(job.get("job_title") or ""):
+        return (False, "")
+
+    # Step 2: must have an SWE keyword in the title
     if not any(kw in title for kw in SWE_KEYWORDS):
         return (False, "")
 
-    # Step 2: must NOT have a seniority keyword in the title
+    # Step 3: must NOT have a seniority keyword in the title
     if any(kw in title for kw in SENIORITY_KEYWORDS):
         return (False, "")
 
-    # Step 3: reject if description requires too much experience
-    # e.g. "3+ years of non-internship", "4+ years", "minimum 5 years"
+    # Step 4: reject if description requires too much experience
+    # e.g. "3+ years", "4+ years", "minimum 5 years"
     if desc and _requires_too_much_experience(desc):
         return (False, "")
 

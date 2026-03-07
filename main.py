@@ -212,6 +212,18 @@ def main() -> None:
     logger.info("Loaded %d existing jobs from %s (will skip duplicates)",
                 len(existing_jobs), args.out)
 
+    # Load separate emailed-URLs log — prevents re-emailing jobs across runs
+    # even if the Excel read fails or the file gets reset
+    _emailed_path = Path("data/emailed_urls.json")
+    if _emailed_path.exists():
+        try:
+            import json as _json
+            _emailed_urls: set[str] = set(_json.loads(_emailed_path.read_text()))
+        except Exception:
+            _emailed_urls = set()
+    else:
+        _emailed_urls = set()
+
     new_jobs: list[dict] = []
 
     logger.info("Processing %d companies (concurrency=%d)…",
@@ -252,17 +264,24 @@ def main() -> None:
     export_to_excel(all_jobs, args.out)
     print(f"\nDone. {len(new_jobs)} new jobs added → {len(all_jobs)} total in {args.out}")
 
-    # Email digest — only send jobs posted within the last 30 days
+    # Email digest — only jobs posted within the last 7 days AND not already emailed
     if args.notify_email and new_jobs:
-        cutoff = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+        cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
         recent_jobs = [
             j for j in new_jobs
-            if not j.get("date_posted") or j.get("date_posted", "") >= cutoff
+            if (not j.get("date_posted") or j.get("date_posted", "") >= cutoff)
+            and j.get("url", "") not in _emailed_urls
         ]
         if recent_jobs:
             send_new_jobs_email(recent_jobs, len(all_jobs), args.out)
+            # Persist emailed URLs so they're never re-sent
+            import json as _json
+            _emailed_urls.update(j.get("url", "") for j in recent_jobs)
+            _emailed_path.write_text(_json.dumps(list(_emailed_urls), indent=2))
+            logger.info("[NOTIFY] Saved %d emailed URLs to %s",
+                        len(_emailed_urls), _emailed_path)
         else:
-            logger.info("[NOTIFY] No recent jobs (last 30 days) to email")
+            logger.info("[NOTIFY] No new jobs from last 7 days to email")
 
 
 if __name__ == "__main__":
