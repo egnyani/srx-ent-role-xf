@@ -26,14 +26,17 @@ from pathlib import Path
 from src.ats_ashby import fetch_jobs as ashby_fetch_jobs
 from src.ats_adzuna import fetch_jobs as adzuna_fetch_jobs, is_configured as adzuna_configured
 from src.ats_greenhouse import fetch_jobs as greenhouse_fetch_jobs
+from src.ats_icims import fetch_jobs as icims_fetch_jobs
 from src.ats_lever import fetch_jobs as lever_fetch_jobs
 from src.ats_playwright import shutdown_browser
 from src.ats_smartrecruiters import fetch_jobs as smartrecruiters_fetch_jobs
 from src.ats_workday import fetch_jobs as workday_fetch_jobs
+from src.dedup import deduplicate, job_fingerprint
 from src.discovery import discover_ats, load_cache, save_cache
 from src.filters import is_entry_level_swe, is_skill_match, is_us_location
 from src.io_export import export_to_excel, load_existing_jobs
 from src.notifier import send_new_jobs_email
+from src.scoring import score_and_sort
 from src.search import get_search_client
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -74,6 +77,8 @@ def _fetch_jobs_for_board(company: str, ats: str, key: str, board: dict) -> list
         return workday_fetch_jobs(company, key)
     elif ats == "smartrecruiters":
         return smartrecruiters_fetch_jobs(company, key)
+    elif ats == "icims":
+        return icims_fetch_jobs(company, key)
     elif ats == "careers_page":
         return board.get("jobs", [])
     return []
@@ -206,18 +211,34 @@ def main() -> None:
     cache = load_cache()
     cache_lock = threading.Lock()
 
+    import json as _json
+
     # Load jobs already saved in the output file so we can deduplicate
     existing_jobs = load_existing_jobs(args.out)
     seen_urls: set[str] = {j.get("url", "") for j in existing_jobs if j.get("url")}
+    # Build fingerprint set from existing jobs for cross-platform dedup
+    existing_fingerprints: set[str] = {
+        job_fingerprint(j) for j in existing_jobs if j.get("job_title")
+    }
     logger.info("Loaded %d existing jobs from %s (will skip duplicates)",
                 len(existing_jobs), args.out)
+
+    # Load applied jobs — exclude these from the email digest
+    _applied_path = Path("data/applied_jobs.json")
+    _applied_urls: set[str] = set()
+    if _applied_path.exists():
+        try:
+            _applied_urls = {j.get("job_url", "") for j in _json.loads(_applied_path.read_text())}
+        except Exception:
+            pass
+    if _applied_urls:
+        logger.info("Loaded %d applied job URLs (will exclude from email)", len(_applied_urls))
 
     # Load separate emailed-URLs log — prevents re-emailing jobs across runs
     # even if the Excel read fails or the file gets reset
     _emailed_path = Path("data/emailed_urls.json")
     if _emailed_path.exists():
         try:
-            import json as _json
             _emailed_urls: set[str] = set(_json.loads(_emailed_path.read_text()))
         except Exception:
             _emailed_urls = set()
@@ -248,9 +269,15 @@ def main() -> None:
                     jobs = future.result()
                     for job in jobs:
                         url = job.get("url", "")
+                        # URL-based dedup (fast path)
                         if url and url in seen_urls:
-                            continue          # already in Excel — skip
+                            continue
+                        # Fingerprint-based dedup (catches same job on multiple platforms)
+                        fp = job_fingerprint(job)
+                        if fp in existing_fingerprints:
+                            continue
                         seen_urls.add(url)
+                        existing_fingerprints.add(fp)
                         new_jobs.append(job)
                 except Exception as exc:
                     logger.warning("[ERROR] %s raised %s", company, exc)
@@ -259,23 +286,29 @@ def main() -> None:
     finally:
         shutdown_browser()
 
+    # Score all new jobs so the Excel and email are sorted by relevance
+    new_jobs = score_and_sort(new_jobs)
+
     # Write existing + new jobs together so the file is always complete
     all_jobs = existing_jobs + new_jobs
     export_to_excel(all_jobs, args.out)
     print(f"\nDone. {len(new_jobs)} new jobs added → {len(all_jobs)} total in {args.out}")
 
-    # Email digest — only jobs posted within the last 7 days AND not already emailed
+    # Email digest:
+    #   - posted within last 7 days
+    #   - not already emailed
+    #   - not already applied to
+    #   - sorted by score (highest first, already done above)
     if args.notify_email and new_jobs:
         cutoff = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
         recent_jobs = [
             j for j in new_jobs
             if (not j.get("date_posted") or j.get("date_posted", "") >= cutoff)
             and j.get("url", "") not in _emailed_urls
+            and j.get("url", "") not in _applied_urls
         ]
         if recent_jobs:
             send_new_jobs_email(recent_jobs, len(all_jobs), args.out)
-            # Persist emailed URLs so they're never re-sent
-            import json as _json
             _emailed_urls.update(j.get("url", "") for j in recent_jobs)
             _emailed_path.write_text(_json.dumps(list(_emailed_urls), indent=2))
             logger.info("[NOTIFY] Saved %d emailed URLs to %s",

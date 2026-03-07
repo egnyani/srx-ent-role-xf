@@ -12,6 +12,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+from .ats_icims import probe as _probe_icims
 from .http_client import FetchError, get, post
 from .search import SearchClient, get_search_client
 
@@ -165,15 +166,16 @@ def _probe_all_ats(company: str) -> dict:
     logger.debug("[%s] Probing slugs: %s", company, slugs)
 
     probe_map = {
-        "greenhouse": _probe_greenhouse,
-        "lever": _probe_lever,
-        "ashby": _probe_ashby,
-        "smartrecruiters": _probe_smartrecruiters,
+        "greenhouse":     _probe_greenhouse,
+        "lever":          _probe_lever,
+        "ashby":          _probe_ashby,
+        "smartrecruiters":_probe_smartrecruiters,
+        "icims":          _probe_icims,
     }
     tasks: list[tuple[str, str]] = [
         (ats_name, slug)
         for slug in slugs
-        for ats_name in ("greenhouse", "lever", "ashby", "smartrecruiters")
+        for ats_name in ("greenhouse", "lever", "ashby", "smartrecruiters", "icims")
     ]
 
     # Wall-clock cap = read timeout + 2 s buffer

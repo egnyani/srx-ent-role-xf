@@ -8,8 +8,8 @@ from openpyxl import Workbook, load_workbook
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 
-COLUMNS = ["company_name", "job_title", "location", "url", "date_posted", "source"]
-COL_WIDTHS = [28, 45, 30, 65, 14, 16]
+COLUMNS = ["company_name", "job_title", "location", "url", "date_posted", "score", "source"]
+COL_WIDTHS = [28, 45, 30, 65, 14, 8, 16]
 
 # openpyxl requires 8-char ARGB — prefix FF for fully opaque
 HEADER_BG = "FF2E4057"

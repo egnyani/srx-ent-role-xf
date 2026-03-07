@@ -32,7 +32,7 @@ def send_new_jobs_email(new_jobs: list[dict], total_jobs: int, excel_path: str) 
     n = len(new_jobs)
     subject = f"🆕 {n} new job{'s' if n != 1 else ''} found – Entry-Level SWE Scraper"
 
-    # Build HTML table of new jobs (cap at 50 rows)
+    # Jobs are already sorted by score from main.py; cap email at 50 rows
     rows_html = ""
     for j in new_jobs[:50]:
         title   = j.get("job_title")    or "—"
@@ -40,12 +40,31 @@ def send_new_jobs_email(new_jobs: list[dict], total_jobs: int, excel_path: str) 
         location= j.get("location")     or "—"
         url     = j.get("url")          or ""
         date    = j.get("date_posted")  or "—"
+        score   = j.get("score")
         link    = f'<a href="{url}" style="color:#0563C1">{title}</a>' if url else title
+
+        # Score badge colour: green ≥70, orange 40-69, grey <40
+        if score is not None:
+            if score >= 70:
+                badge_bg, badge_fg = "#d4edda", "#155724"
+            elif score >= 40:
+                badge_bg, badge_fg = "#fff3cd", "#856404"
+            else:
+                badge_bg, badge_fg = "#f0f0f0", "#555"
+            score_badge = (
+                f'<span style="background:{badge_bg};color:{badge_fg};'
+                f'border-radius:10px;padding:2px 8px;font-size:11px;'
+                f'font-weight:bold">{score}%</span>'
+            )
+        else:
+            score_badge = "—"
+
         rows_html += f"""
         <tr>
           <td style="padding:6px 10px;border-bottom:1px solid #eee">{link}</td>
           <td style="padding:6px 10px;border-bottom:1px solid #eee">{company}</td>
           <td style="padding:6px 10px;border-bottom:1px solid #eee">{location}</td>
+          <td style="padding:6px 10px;border-bottom:1px solid #eee;text-align:center">{score_badge}</td>
           <td style="padding:6px 10px;border-bottom:1px solid #eee">{date}</td>
         </tr>"""
 
@@ -57,7 +76,7 @@ def send_new_jobs_email(new_jobs: list[dict], total_jobs: int, excel_path: str) 
         )
 
     html = f"""
-    <html><body style="font-family:Arial,sans-serif;color:#333;max-width:800px;margin:auto">
+    <html><body style="font-family:Arial,sans-serif;color:#333;max-width:860px;margin:auto">
       <h2 style="color:#2E4057">{n} New Job{'s' if n != 1 else ''} Added</h2>
       <p>Total jobs in tracker: <strong>{total_jobs}</strong><br>
          File: <code>{excel_path}</code></p>
@@ -67,6 +86,7 @@ def send_new_jobs_email(new_jobs: list[dict], total_jobs: int, excel_path: str) 
             <th style="padding:8px 10px;text-align:left">Job Title</th>
             <th style="padding:8px 10px;text-align:left">Company</th>
             <th style="padding:8px 10px;text-align:left">Location</th>
+            <th style="padding:8px 10px;text-align:center">Match</th>
             <th style="padding:8px 10px;text-align:left">Posted</th>
           </tr>
         </thead>
