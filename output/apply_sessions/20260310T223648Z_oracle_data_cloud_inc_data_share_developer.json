@@ -1,0 +1,267 @@
+{
+  "job": {
+    "queue_key": "https://boards.greenhouse.io/accenturefederalservices/jobs/4661219006?gh_jid=4661219006",
+    "company_name": "ORACLE DATA CLOUD INC",
+    "job_title": "Data Share Developer",
+    "url": "https://boards.greenhouse.io/accenturefederalservices/jobs/4661219006?gh_jid=4661219006",
+    "apply_target": "greenhouse"
+  },
+  "generated_at": "2026-03-10T22:36:48Z",
+  "resolved_fields": [
+    {
+      "field_key": "first_name",
+      "label": "First Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Gnyani",
+      "source": "identity.first_name"
+    },
+    {
+      "field_key": "last_name",
+      "label": "Last Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Enugandula",
+      "source": "identity.last_name"
+    },
+    {
+      "field_key": "email",
+      "label": "Email",
+      "field_type": "text",
+      "required": true,
+      "value": "gnyenug@gmail.com",
+      "source": "identity.email"
+    },
+    {
+      "field_key": "country",
+      "label": "Country",
+      "field_type": "text",
+      "required": true,
+      "value": "United States",
+      "source": "identity.country"
+    },
+    {
+      "field_key": "phone",
+      "label": "Phone",
+      "field_type": "tel",
+      "required": true,
+      "value": "+1 (315) 766-9099",
+      "source": "identity.phone"
+    },
+    {
+      "field_key": "candidate-location",
+      "label": "Location (City)",
+      "field_type": "text",
+      "required": true,
+      "value": "Syracuse, New York, United States",
+      "source": "preferences.application_city_override"
+    },
+    {
+      "field_key": "resume",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "data/documents/Gnyani_Enugandula_Resume.pdf",
+      "source": "documents.resume_path"
+    },
+    {
+      "field_key": "cover_letter",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "data/documents/Gnyani_Enugandula_Cover_Letter.pdf",
+      "source": "documents.cover_letter_path"
+    },
+    {
+      "field_key": "school--0",
+      "label": "School",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "degree--0",
+      "label": "Degree",
+      "field_type": "text",
+      "required": true,
+      "value": "Master of Science",
+      "source": "education.degree"
+    },
+    {
+      "field_key": "discipline--0",
+      "label": "Discipline",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_8286133006",
+      "label": "State",
+      "field_type": "text",
+      "required": true,
+      "value": "New York",
+      "source": "preferences.application_state_override"
+    },
+    {
+      "field_key": "question_8286134006",
+      "label": "Country",
+      "field_type": "text",
+      "required": false,
+      "value": "United States",
+      "source": "identity.country"
+    },
+    {
+      "field_key": "question_8286135006",
+      "label": "Are you at least 18 years of age?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.over_18"
+    },
+    {
+      "field_key": "question_8286136006",
+      "label": "Are you legally authorized to work in the United States?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.work_authorization"
+    },
+    {
+      "field_key": "question_8286137006",
+      "label": "Will you now or in the future require sponsorship for employment visa status (for example, H-1B visa status)?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.sponsorship_needed"
+    },
+    {
+      "field_key": "question_8286138006",
+      "label": "Have you entered into a non-disclosure or non-compete agreement or understanding of any kind?",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.noncompete"
+    },
+    {
+      "field_key": "question_8286139006",
+      "label": "Have you worked at Accenture in the past?",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.worked_at_accenture"
+    },
+    {
+      "field_key": "question_8286140006",
+      "label": "How did you hear about us?",
+      "field_type": "text",
+      "required": true,
+      "value": "Career Fair",
+      "source": "agent_instructions.default_question_answers.heard_about_company"
+    },
+    {
+      "field_key": "question_8286141006",
+      "label": "Do you hold a security clearance?",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.security_clearance"
+    },
+    {
+      "field_key": "question_8286142006",
+      "label": "At your current employer, are you currently working on a project with Accenture or have you worked on a project with Accenture in the past 24 months?",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.current_accenture_project"
+    },
+    {
+      "field_key": "question_8286143006",
+      "label": "Are you a current employee of the U.S. Government (including U.S. Congress or military) or any state or local government? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID\u202f(see list of exceptions below). NOTE: answer yes if you have accepted the \u201cFork-in-the-Road\u201d offer, separated with a Deferred Retirement Plan, or are on administrative leave pending separation from the Government.",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.current_government_employee"
+    },
+    {
+      "field_key": "question_8286144006",
+      "label": "Will you be serving as enlisted personnel in either the Reserves or the National Guard while working for AFS?",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.reserves_or_guard"
+    },
+    {
+      "field_key": "question_8286145006",
+      "label": "Were you an employee of the U.S. Government (including U.S. Congress or military) or any state or local government within the past 10 years? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID (see list of exceptions below).",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.past_government_employee"
+    },
+    {
+      "field_key": "question_8286146006",
+      "label": "Do you have any family members or people you have close relationships with who work for Accenture Federal Services?",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "agent_instructions.default_question_answers.family_relationship"
+    },
+    {
+      "field_key": "question_8286147006",
+      "label": "If yes, please list the full name of the employee(s) and your relationship to them.",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_8286148006",
+      "label": "Affirmation",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.affirmation"
+    },
+    {
+      "field_key": "gender",
+      "label": "Gender",
+      "field_type": "text",
+      "required": true,
+      "value": "Woman",
+      "source": "eeo.gender"
+    },
+    {
+      "field_key": "veteran_status",
+      "label": "Veteran Status",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "eeo.veteran_status"
+    },
+    {
+      "field_key": "disability_status",
+      "label": "Disability Status",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "eeo.disability_status"
+    }
+  ],
+  "unresolved_fields": [
+    {
+      "field_key": "hispanic_ethnicity",
+      "label": "Are you Hispanic/Latino?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    }
+  ],
+  "notes": [
+    "Authorized to work in the US for the next 2.5 years without sponsorship; sponsorship will be needed after that to continue.",
+    "If Workday adds the project as a 4th experience entry, delete that extra experience before submitting.",
+    "Pay attention to month/day/year date formatting in application forms."
+  ]
+}

@@ -1,0 +1,70 @@
+name: Entry-Level SWE Job Scraper
+
+on:
+  schedule:
+    # Run every hour in UTC, then gate execution using America/New_York below.
+    # This avoids DST drift and keeps the intended local window stable.
+    - cron: "0 * * * *"
+  workflow_dispatch:           # lets you trigger a manual run from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write          # needed to commit cache + excel back to repo
+
+    steps:
+      - name: Check ET run window
+        id: window
+        env:
+          TZ: America/New_York
+        run: |
+          hour=$(date +%H)
+          if [ "$hour" -ge 8 ] && [ "$hour" -lt 21 ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "Within allowed ET window: $(date)"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Outside allowed ET window: $(date)"
+          fi
+
+      - name: Checkout repo
+        if: steps.window.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        if: steps.window.outputs.should_run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        if: steps.window.outputs.should_run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Create .env from secrets
+        if: steps.window.outputs.should_run == 'true'
+        run: |
+          cat > .env << EOF
+          TAVILY_API_KEY=${{ secrets.TAVILY_API_KEY }}
+          ADZUNA_APP_ID=${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY=${{ secrets.ADZUNA_APP_KEY }}
+          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+          NOTIFY_EMAIL=${{ secrets.NOTIFY_EMAIL }}
+          EOF
+
+      - name: Run scraper
+        if: steps.window.outputs.should_run == 'true'
+        run: python main.py --notify-email --max-age-hours 0 --concurrency 30
+
+      - name: Commit updated cache and Excel
+        if: steps.window.outputs.should_run == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/discovered_boards.json data/emailed_urls.json data/last_summary_date.txt output/entry_roles.xlsx || true
+          git diff --staged --quiet || git commit -m "chore: update jobs [skip ci]"
+          git push

@@ -1,0 +1,235 @@
+{
+  "job": {
+    "queue_key": "https://job-boards.greenhouse.io/verisign/jobs/7653838003",
+    "company_name": "VARONIS SYSTEMS INC",
+    "job_title": "Junior Software Engineer",
+    "url": "https://job-boards.greenhouse.io/verisign/jobs/7653838003",
+    "apply_target": "greenhouse"
+  },
+  "generated_at": "2026-03-10T22:27:50Z",
+  "resolved_fields": [
+    {
+      "field_key": "first_name",
+      "label": "First Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Gnyani",
+      "source": "identity.first_name"
+    },
+    {
+      "field_key": "last_name",
+      "label": "Last Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Enugandula",
+      "source": "identity.last_name"
+    },
+    {
+      "field_key": "email",
+      "label": "Email",
+      "field_type": "text",
+      "required": true,
+      "value": "gnyenug@gmail.com",
+      "source": "identity.email"
+    },
+    {
+      "field_key": "phone",
+      "label": "Phone",
+      "field_type": "tel",
+      "required": true,
+      "value": "+1 (315) 766-9099",
+      "source": "identity.phone"
+    },
+    {
+      "field_key": "candidate-location",
+      "label": "Location (City)",
+      "field_type": "text",
+      "required": true,
+      "value": "Syracuse, New York, United States",
+      "source": "preferences.application_city_override"
+    },
+    {
+      "field_key": "resume",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "data/documents/Gnyani_Enugandula_Resume.pdf",
+      "source": "documents.resume_path"
+    },
+    {
+      "field_key": "cover_letter",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "data/documents/Gnyani_Enugandula_Cover_Letter.pdf",
+      "source": "documents.cover_letter_path"
+    },
+    {
+      "field_key": "question_29934473003",
+      "label": "Address Line 2",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934478003",
+      "label": "Do you need, or will you need in the future, any immigration related support or sponsorship from Verisign in order to begin or continue employment with Verisign? This includes support (such as J-1, F-1 OPT, CPT, or STEM OPT) and/or visa sponsorship for employment (H-1B, H-1B1, E-3, or O-1).",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.sponsorship_needed"
+    },
+    {
+      "field_key": "question_29934480003",
+      "label": "How did you hear about us?",
+      "field_type": "text",
+      "required": true,
+      "value": "Career Fair",
+      "source": "agent_instructions.default_question_answers.heard_about_company"
+    },
+    {
+      "field_key": "question_29934481003",
+      "label": "If your response is 'Other', 'Job Fair' or 'Employee Referral', please provide details:",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934487003",
+      "label": "Please identify your gender",
+      "field_type": "text",
+      "required": true,
+      "value": "Woman",
+      "source": "eeo.gender"
+    },
+    {
+      "field_key": "question_29934488003",
+      "label": "Please identify your race/ethnicity",
+      "field_type": "text",
+      "required": true,
+      "value": "South Asian",
+      "source": "eeo.ethnicity"
+    },
+    {
+      "field_key": "question_29934489003",
+      "label": "Please identify your U.S. veteran status",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "eeo.veteran_status"
+    },
+    {
+      "field_key": "question_29934490003",
+      "label": "Please identify your disability status",
+      "field_type": "text",
+      "required": true,
+      "value": "No",
+      "source": "eeo.disability_status"
+    }
+  ],
+  "unresolved_fields": [
+    {
+      "field_key": "country",
+      "label": "Country",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934472003",
+      "label": "Address",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934474003",
+      "label": "City/Region",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934475003",
+      "label": "State/Province",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934476003",
+      "label": "Country Code",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934477003",
+      "label": "Zip code",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934479003",
+      "label": "This position offers a flexible, hybrid work schedule and is located in Reston, Virginia. Reston-based employees must live within a 70-mile driving distance of the office. Do you currently live within 70 miles of Reston, Virginia?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934482003",
+      "label": "Are you currently or were you previously a U.S. Government civilian or military employee?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934483003",
+      "label": "Do you have a personal (extended family or friend) or business relationship with a Non-U.S. government official or employee of a state-owned enterprise?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934484003",
+      "label": "Have you previously worked for Verisign?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934485003",
+      "label": "Do you currently have a relative employed with Verisign?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_29934486003",
+      "label": "I acknowledge that all information provided is accurate and true.",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    }
+  ],
+  "notes": [
+    "Authorized to work in the US for the next 2.5 years without sponsorship; sponsorship will be needed after that to continue.",
+    "If Workday adds the project as a 4th experience entry, delete that extra experience before submitting.",
+    "Pay attention to month/day/year date formatting in application forms."
+  ]
+}

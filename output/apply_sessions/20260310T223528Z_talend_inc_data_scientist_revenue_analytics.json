@@ -1,0 +1,114 @@
+{
+  "job": {
+    "queue_key": "https://job-boards.greenhouse.io/extend/jobs/5822438004",
+    "company_name": "TALEND INC",
+    "job_title": "Data Scientist, Revenue Analytics",
+    "url": "https://job-boards.greenhouse.io/extend/jobs/5822438004",
+    "apply_target": "greenhouse"
+  },
+  "generated_at": "2026-03-10T22:35:28Z",
+  "resolved_fields": [
+    {
+      "field_key": "first_name",
+      "label": "First Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Gnyani",
+      "source": "identity.first_name"
+    },
+    {
+      "field_key": "last_name",
+      "label": "Last Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Enugandula",
+      "source": "identity.last_name"
+    },
+    {
+      "field_key": "preferred_name",
+      "label": "Preferred First Name",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "email",
+      "label": "Email",
+      "field_type": "text",
+      "required": true,
+      "value": "gnyenug@gmail.com",
+      "source": "identity.email"
+    },
+    {
+      "field_key": "country",
+      "label": "Country",
+      "field_type": "text",
+      "required": false,
+      "value": "United States",
+      "source": "identity.country"
+    },
+    {
+      "field_key": "phone",
+      "label": "Phone",
+      "field_type": "tel",
+      "required": false,
+      "value": "+1 (315) 766-9099",
+      "source": "identity.phone"
+    },
+    {
+      "field_key": "resume",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "data/documents/Gnyani_Enugandula_Resume.pdf",
+      "source": "documents.resume_path"
+    },
+    {
+      "field_key": "cover_letter",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "data/documents/Gnyani_Enugandula_Cover_Letter.pdf",
+      "source": "documents.cover_letter_path"
+    },
+    {
+      "field_key": "question_15584201004",
+      "label": "LinkedIn Profile",
+      "field_type": "text",
+      "required": false,
+      "value": "https://www.linkedin.com/in/gnyani-enugandula-6a0149262/",
+      "source": "identity.linkedin_url"
+    },
+    {
+      "field_key": "question_15584202004",
+      "label": "Website",
+      "field_type": "text",
+      "required": false,
+      "value": "https://gnyani.vercel.app/",
+      "source": "identity.portfolio_url"
+    },
+    {
+      "field_key": "question_15584207004",
+      "label": "Are you legally authorized to work in the United States?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.work_authorization"
+    },
+    {
+      "field_key": "question_15584208004",
+      "label": "Will you now or in the future require immigration sponsorship by Extend to attain or maintain your employment eligibility (e.g., H-1B, E-3, TN, O-1, STEM OPT, or any immigration work authorization requiring a written submission from Extend to a government agency)?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.sponsorship_needed"
+    }
+  ],
+  "unresolved_fields": [],
+  "notes": [
+    "Authorized to work in the US for the next 2.5 years without sponsorship; sponsorship will be needed after that to continue.",
+    "If Workday adds the project as a 4th experience entry, delete that extra experience before submitting.",
+    "Pay attention to month/day/year date formatting in application forms."
+  ]
+}

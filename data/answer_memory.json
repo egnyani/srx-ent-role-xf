@@ -1,0 +1,425 @@
+{
+  "country||united states +1": {
+    "question": "Country",
+    "options": [
+      "United States +1"
+    ],
+    "selected_option": "United States +1",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:15:03Z"
+  },
+  "state||new york": {
+    "question": "State",
+    "options": [
+      "New York"
+    ],
+    "selected_option": "New York",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:07Z"
+  },
+  "country||united states minor outlying islands (+1)|united states of america (+1)": {
+    "question": "Country",
+    "options": [
+      "United States of America (+1)",
+      "United States Minor Outlying Islands (+1)"
+    ],
+    "selected_option": "United States of America (+1)",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:09Z"
+  },
+  "are you at least 18 years of age?||yes": {
+    "question": "Are you at least 18 years of age?",
+    "options": [
+      "Yes"
+    ],
+    "selected_option": "Yes",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:10Z"
+  },
+  "are you legally authorized to work in the united states?||yes": {
+    "question": "Are you legally authorized to work in the United States?",
+    "options": [
+      "Yes"
+    ],
+    "selected_option": "Yes",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:11Z"
+  },
+  "will you now or in the future require sponsorship for employment visa status (for example, h-1b visa status)?||yes": {
+    "question": "Will you now or in the future require sponsorship for employment visa status (for example, H-1B visa status)?",
+    "options": [
+      "Yes"
+    ],
+    "selected_option": "Yes",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:13Z"
+  },
+  "have you entered into a non-disclosure or non-compete agreement or understanding of any kind?||no": {
+    "question": "Have you entered into a non-disclosure or non-compete agreement or understanding of any kind?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:14Z"
+  },
+  "have you worked at accenture in the past?||no": {
+    "question": "Have you worked at Accenture in the past?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:15Z"
+  },
+  "how did you hear about us?||accenture career fair|campus career fair|employer career fair": {
+    "question": "How did you hear about us?",
+    "options": [
+      "Accenture Career Fair",
+      "Campus Career Fair",
+      "Employer Career Fair"
+    ],
+    "selected_option": "Accenture Career Fair",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:17Z"
+  },
+  "do you hold a security clearance?||none": {
+    "question": "Do you hold a security clearance?",
+    "options": [
+      "None"
+    ],
+    "selected_option": "None",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:18Z"
+  },
+  "at your current employer, are you currently working on a project with accenture or have you worked on a project with accenture in the past 24 months?||no": {
+    "question": "At your current employer, are you currently working on a project with Accenture or have you worked on a project with Accenture in the past 24 months?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:19Z"
+  },
+  "are you a current employee of the u.s. government (including u.s. congress or military) or any state or local government? this includes entities owned or controlled by the u.s. federal government, such as amtrak, the united states postal service, and usaid (see list of exceptions below). note: answer yes if you have accepted the \u201cfork-in-the-road\u201d offer, separated with a deferred retirement plan, or are on administrative leave pending separation from the government.||no": {
+    "question": "Are you a current employee of the U.S. Government (including U.S. Congress or military) or any state or local government? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID\u202f(see list of exceptions below). NOTE: answer yes if you have accepted the \u201cFork-in-the-Road\u201d offer, separated with a Deferred Retirement Plan, or are on administrative leave pending separation from the Government.",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:21Z"
+  },
+  "will you be serving as enlisted personnel in either the reserves or the national guard while working for afs?||no": {
+    "question": "Will you be serving as enlisted personnel in either the Reserves or the National Guard while working for AFS?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:22Z"
+  },
+  "were you an employee of the u.s. government (including u.s. congress or military) or any state or local government within the past 10 years? this includes entities owned or controlled by the u.s. federal government, such as amtrak, the united states postal service, and usaid (see list of exceptions below).||no": {
+    "question": "Were you an employee of the U.S. Government (including U.S. Congress or military) or any state or local government within the past 10 years? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID (see list of exceptions below).",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:24Z"
+  },
+  "do you have any family members or people you have close relationships with who work for accenture federal services?||no": {
+    "question": "Do you have any family members or people you have close relationships with who work for Accenture Federal Services?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:25Z"
+  },
+  "are you hispanic/latino?||no": {
+    "question": "Are you Hispanic/Latino?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:35Z"
+  },
+  "veteran status||i am not a protected veteran": {
+    "question": "Veteran Status",
+    "options": [
+      "I am not a protected veteran"
+    ],
+    "selected_option": "I am not a protected veteran",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:36Z"
+  },
+  "disability status||i do not want to answer|no, i do not have a disability and have not had one in the past": {
+    "question": "Disability Status",
+    "options": [
+      "No, I do not have a disability and have not had one in the past",
+      "I do not want to answer"
+    ],
+    "selected_option": "No, I do not have a disability and have not had one in the past",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:38Z"
+  },
+  "school||syracuse university": {
+    "question": "School",
+    "options": [
+      "Syracuse University"
+    ],
+    "selected_option": "Syracuse University",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:01Z"
+  },
+  "discipline||computer information systems|information systems|information systems management|management information systems": {
+    "question": "Discipline",
+    "options": [
+      "Computer Information Systems",
+      "Information Systems",
+      "Information Systems Management",
+      "Management Information Systems"
+    ],
+    "selected_option": "Information Systems",
+    "source": "live_fill",
+    "outcome": "used",
+    "updated_at": "2026-03-10T23:22:06Z"
+  },
+  "::school||syracuse university": {
+    "question": "School",
+    "options": [
+      "Syracuse University"
+    ],
+    "selected_option": "Syracuse University",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:05Z"
+  },
+  "::discipline||computer information systems|information systems|information systems management|management information systems": {
+    "question": "Discipline",
+    "options": [
+      "Computer Information Systems",
+      "Information Systems",
+      "Information Systems Management",
+      "Management Information Systems"
+    ],
+    "selected_option": "Information Systems",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:10Z"
+  },
+  "::state||new york": {
+    "question": "State",
+    "options": [
+      "New York"
+    ],
+    "selected_option": "New York",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:12Z"
+  },
+  "::country||united states minor outlying islands (+1)|united states of america (+1)": {
+    "question": "Country",
+    "options": [
+      "United States of America (+1)",
+      "United States Minor Outlying Islands (+1)"
+    ],
+    "selected_option": "United States of America (+1)",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:13Z"
+  },
+  "::are you at least 18 years of age?||yes": {
+    "question": "Are you at least 18 years of age?",
+    "options": [
+      "Yes"
+    ],
+    "selected_option": "Yes",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:14Z"
+  },
+  "::are you legally authorized to work in the united states?||yes": {
+    "question": "Are you legally authorized to work in the United States?",
+    "options": [
+      "Yes"
+    ],
+    "selected_option": "Yes",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:16Z"
+  },
+  "::will you now or in the future require sponsorship for employment visa status (for example, h-1b visa status)?||yes": {
+    "question": "Will you now or in the future require sponsorship for employment visa status (for example, H-1B visa status)?",
+    "options": [
+      "Yes"
+    ],
+    "selected_option": "Yes",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:17Z"
+  },
+  "::have you entered into a non-disclosure or non-compete agreement or understanding of any kind?||no": {
+    "question": "Have you entered into a non-disclosure or non-compete agreement or understanding of any kind?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:18Z"
+  },
+  "::have you worked at accenture in the past?||no": {
+    "question": "Have you worked at Accenture in the past?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:20Z"
+  },
+  "::how did you hear about us?||accenture career fair|campus career fair|employer career fair": {
+    "question": "How did you hear about us?",
+    "options": [
+      "Accenture Career Fair",
+      "Campus Career Fair",
+      "Employer Career Fair"
+    ],
+    "selected_option": "Accenture Career Fair",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:21Z"
+  },
+  "::do you hold a security clearance?||none": {
+    "question": "Do you hold a security clearance?",
+    "options": [
+      "None"
+    ],
+    "selected_option": "None",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:23Z"
+  },
+  "::at your current employer, are you currently working on a project with accenture or have you worked on a project with accenture in the past 24 months?||no": {
+    "question": "At your current employer, are you currently working on a project with Accenture or have you worked on a project with Accenture in the past 24 months?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:24Z"
+  },
+  "::are you a current employee of the u.s. government (including u.s. congress or military) or any state or local government? this includes entities owned or controlled by the u.s. federal government, such as amtrak, the united states postal service, and usaid (see list of exceptions below). note: answer yes if you have accepted the \u201cfork-in-the-road\u201d offer, separated with a deferred retirement plan, or are on administrative leave pending separation from the government.||no": {
+    "question": "Are you a current employee of the U.S. Government (including U.S. Congress or military) or any state or local government? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID\u202f(see list of exceptions below). NOTE: answer yes if you have accepted the \u201cFork-in-the-Road\u201d offer, separated with a Deferred Retirement Plan, or are on administrative leave pending separation from the Government.",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:25Z"
+  },
+  "::will you be serving as enlisted personnel in either the reserves or the national guard while working for afs?||no": {
+    "question": "Will you be serving as enlisted personnel in either the Reserves or the National Guard while working for AFS?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:27Z"
+  },
+  "::were you an employee of the u.s. government (including u.s. congress or military) or any state or local government within the past 10 years? this includes entities owned or controlled by the u.s. federal government, such as amtrak, the united states postal service, and usaid (see list of exceptions below).||no": {
+    "question": "Were you an employee of the U.S. Government (including U.S. Congress or military) or any state or local government within the past 10 years? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID (see list of exceptions below).",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:28Z"
+  },
+  "::do you have any family members or people you have close relationships with who work for accenture federal services?||no": {
+    "question": "Do you have any family members or people you have close relationships with who work for Accenture Federal Services?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:29Z"
+  },
+  "::are you hispanic/latino?||no": {
+    "question": "Are you Hispanic/Latino?",
+    "options": [
+      "No"
+    ],
+    "selected_option": "No",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:39Z"
+  },
+  "::veteran status||i am not a protected veteran": {
+    "question": "Veteran Status",
+    "options": [
+      "I am not a protected veteran"
+    ],
+    "selected_option": "I am not a protected veteran",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:41Z"
+  },
+  "::disability status||i do not want to answer|no, i do not have a disability and have not had one in the past": {
+    "question": "Disability Status",
+    "options": [
+      "No, I do not have a disability and have not had one in the past",
+      "I do not want to answer"
+    ],
+    "selected_option": "No, I do not have a disability and have not had one in the past",
+    "source": "live_fill",
+    "outcome": "used",
+    "stale": false,
+    "updated_at": "2026-03-11T00:24:42Z"
+  }
+}

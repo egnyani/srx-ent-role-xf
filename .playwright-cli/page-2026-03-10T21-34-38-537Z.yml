@@ -1,0 +1,527 @@
+- generic [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - img "SharkNinja Logo" [ref=e5]
+      - generic [ref=e6]:
+        - link "Back to jobs" [ref=e7] [cursor=pointer]:
+          - /url: https://job-boards.greenhouse.io/sharkninjaoperatingllc
+          - img [ref=e8]
+          - text: Back to jobs
+        - generic [ref=e12]: New
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - heading "DTC Fulfillment Analyst" [level=1] [ref=e15]
+            - generic [ref=e16]:
+              - img [ref=e17]
+              - generic [ref=e19]: United States
+          - button "Apply" [ref=e20] [cursor=pointer]
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - paragraph [ref=e23]:
+              - strong [ref=e24]: About Us
+            - paragraph [ref=e25]:
+              - text: SharkNinja is a global product design and technology company, with a diversified portfolio of 5-star rated lifestyle solutions that positively impact people’s lives in homes around the world.
+              - strong [ref=e26]: Powered by two trusted, global brands, Shark and Ninja
+              - text: ", the company has a proven track record of bringing disruptive innovation to market and developing one consumer product after another has allowed SharkNinja to enter multiple product categories, driving significant growth and market share gains. Headquartered in Needham, Massachusetts with more than 4,100 associates, the company’s products are sold at key retailers, online and offline, and through distributors around the world."
+            - paragraph [ref=e27]
+          - generic [ref=e28]:
+            - paragraph [ref=e29]:
+              - strong [ref=e30]: "Title:"
+              - strong [ref=e31]: DTC Fulfillment Analyst
+            - paragraph [ref=e32]:
+              - strong [ref=e33]: "Reports to:"
+              - strong [ref=e34]: Director, Global DTC Operations
+            - paragraph [ref=e35]:
+              - strong [ref=e36]: "Location:"
+              - strong [ref=e37]: Remote
+            - paragraph [ref=e38]
+            - paragraph [ref=e39]:
+              - strong [ref=e40]:
+                - generic [ref=e41]: COMPANY BACKGROUND/CULTURE
+            - paragraph [ref=e42]
+            - paragraph [ref=e43]: At SharkNinja, our purpose is to positively impact people’s lives every day in every home around the world! We work very hard to provide our consumers with high quality, exciting products that make life easier. We thrive on passion and innovation, and are looking for great people, with great ideas, who want to build the next big thing and develop while they do. At SharkNinja, Diversity, Equity, and Inclusion is vital to our global success. Valuing each unique voice and blending all of our diverse skills strengthens SharkNinja’s innovation every day. We support ALL of our associates in bringing their authentic selves to work, making an impact, and having the opportunity for career acceleration. With help from our leadership, associates, and our community, we aim to have equity be a key component of the SharkNinja DNA.
+            - paragraph [ref=e44]
+            - paragraph [ref=e45]:
+              - strong [ref=e46]:
+                - generic [ref=e47]: "For more information about SharkNinja, please visit us at:"
+              - strong [ref=e48]:
+                - generic [ref=e49]: www.sharkninja.com
+            - paragraph [ref=e50]
+            - paragraph [ref=e51]:
+              - strong [ref=e52]: Position Summary
+            - paragraph [ref=e53]: The DTC Fulfillment Analyst is responsible for monitoring and improving end-to-end Order-to-Porch performance for direct-to-consumer shipments. This role reviews daily shipment and tracking data, proactively manages delivery exceptions, and drives accountability and corrective actions with parcel carriers and DC operations partners to ensure a fast, reliable, and positive consumer delivery experience.
+            - paragraph [ref=e54]: The ideal candidate is highly detail-oriented, data-driven, and comfortable working cross-functionally with carriers, customer service, and internal operations teams to resolve delays, prevent recurring delivery issues and striving for a superior customer experience everyday.
+            - paragraph [ref=e55]
+            - paragraph [ref=e56]:
+              - strong [ref=e57]: Key Responsibilities
+            - paragraph [ref=e58]:
+              - strong [ref=e59]: Order-to-Porch Performance
+            - list [ref=e60]:
+              - listitem [ref=e61]: Monitor daily DTC shipment activity and tracking status to ensure on-time delivery performance.
+            - list [ref=e62]:
+              - listitem [ref=e63]: Identify at-risk, delayed, or stalled shipments and take proactive action to resolve issues.
+            - list [ref=e64]:
+              - listitem [ref=e65]: Track and report Order-to-Porch lead time performance against service level targets.
+            - list [ref=e66]:
+              - listitem [ref=e67]: Present ideas for Order-to-Porch lead time improvements for alignment and implementation.
+            - paragraph [ref=e68]:
+              - strong [ref=e69]: Carrier Management & Accountability
+            - list [ref=e70]:
+              - listitem [ref=e71]: Act as a primary point of contact for parcel carriers regarding delivery delays, exceptions, and service failures.
+            - list [ref=e72]:
+              - listitem [ref=e73]: Drive carrier accountability through root-cause analysis, follow-ups, and corrective action requests.
+            - list [ref=e74]:
+              - listitem [ref=e75]: Escalate recurring issues and support carrier performance reviews with data and insights.
+            - paragraph [ref=e76]:
+              - strong [ref=e77]: Exception Management
+            - list [ref=e78]:
+              - listitem [ref=e79]:
+                - text: Investigate delivery exceptions including
+                - strong [ref=e80]
+                - text: pickup and in-transit
+                - strong [ref=e81]
+                - text: delays, misroutes, failed delivery attempts, and lost or damaged shipments.
+            - list [ref=e82]:
+              - listitem [ref=e83]: Coordinate resolutions with carriers, fulfillment centers, and customer service teams.
+            - list [ref=e84]:
+              - listitem [ref=e85]: Ensure timely and accurate updates are communicated to internal stakeholders.
+            - paragraph [ref=e86]:
+              - strong [ref=e87]: Consumer Experience Support
+            - list [ref=e88]:
+              - listitem [ref=e89]: Partner with Customer Experience teams to minimize consumer impact from delivery delays.
+            - list [ref=e90]:
+              - listitem [ref=e91]: Support post-purchase experience by ensuring shipment issues are resolved quickly and accurately.
+            - list [ref=e92]:
+              - listitem [ref=e93]: Identify trends that negatively impact consumer satisfaction and recommend process improvements.
+            - paragraph [ref=e94]:
+              - strong [ref=e95]: Reporting & Continuous Improvement
+            - list [ref=e96]:
+              - listitem [ref=e97]: Maintain dashboards and reports related to shipment status, delivery performance, and carrier KPIs.
+            - list [ref=e98]:
+              - listitem [ref=e99]: Analyze trends to identify opportunities to improve speed, reliability, and cost.
+            - list [ref=e100]:
+              - listitem [ref=e101]: Support continuous improvement initiatives focused on reducing delivery delays and exceptions.
+            - paragraph [ref=e102]
+            - paragraph [ref=e103]:
+              - strong [ref=e104]: Qualifications
+            - paragraph [ref=e105]:
+              - strong [ref=e106]: Required
+            - list [ref=e107]:
+              - listitem [ref=e108]: Bachelor’s degree in Supply Chain, Logistics, Business, or related field (or equivalent experience)
+            - list [ref=e109]:
+              - listitem [ref=e110]: 1–3 years of experience in logistics, transportation, fulfillment, or e-commerce operations
+            - list [ref=e111]:
+              - listitem [ref=e112]: Experience working with parcel carriers and shipment tracking systems
+            - list [ref=e113]:
+              - listitem [ref=e114]: Strong analytical skills and comfort working with large data sets
+            - list [ref=e115]:
+              - listitem [ref=e116]: High attention to detail and strong follow-through
+            - paragraph [ref=e117]:
+              - strong [ref=e118]: Preferred
+            - list [ref=e119]:
+              - listitem [ref=e120]: Experience supporting DTC or e-commerce fulfillment operations
+            - list [ref=e121]:
+              - listitem [ref=e122]: Familiarity with Order Management Systems (OMS), Transportation Management Systems (TMS), or carrier portals
+            - list [ref=e123]:
+              - listitem [ref=e124]: Experience with carrier performance metrics and service level management
+            - paragraph [ref=e125]
+            - paragraph [ref=e126]:
+              - strong [ref=e127]: Key Skills & Competencies
+            - list [ref=e128]:
+              - listitem [ref=e129]: Shipment tracking and exception management
+            - list [ref=e130]:
+              - listitem [ref=e131]: Carrier communication and escalation
+            - list [ref=e132]:
+              - listitem [ref=e133]: Data analysis and reporting
+            - list [ref=e134]:
+              - listitem [ref=e135]: Problem solving and root-cause analysis
+            - list [ref=e136]:
+              - listitem [ref=e137]: Cross-functional collaboration
+            - list [ref=e138]:
+              - listitem [ref=e139]: Customer-first mindset
+            - paragraph [ref=e140]
+            - paragraph [ref=e141]:
+              - strong [ref=e142]: "Success in This Role Looks Like:"
+            - list [ref=e143]:
+              - listitem [ref=e144]: Reduced Order-to-Porch lead time and delivery variability
+            - list [ref=e145]:
+              - listitem [ref=e146]: Fewer repeat carrier service issues
+            - list [ref=e147]:
+              - listitem [ref=e148]:
+                - text: Faster identification and
+                - strong [ref=e149]
+                - text: resolution of delivery exceptions
+            - list [ref=e150]:
+              - listitem [ref=e151]: Improved consumer delivery experience and satisfaction
+            - paragraph [ref=e152]
+            - paragraph [ref=e153]
+            - paragraph [ref=e154]:
+              - strong [ref=e155]:
+                - generic [ref=e156]: Other Requirements
+            - list [ref=e157]:
+              - listitem [ref=e158]: Travel Required - up to 10%
+            - paragraph [ref=e159]
+          - generic [ref=e161]:
+            - generic [ref=e164]:
+              - paragraph [ref=e165]
+              - paragraph [ref=e166]:
+                - generic [ref=e167]:
+                  - strong [ref=e168]: "Salary and Other Compensation:"
+                  - text: The annual salary range for this position is displayed below. Factors which may affect starting pay within this range may include geography/market, skills, education, experience and other qualifications of the successful candidate.
+              - paragraph [ref=e169]: "The Company offers the following benefits for this position, subject to applicable eligibility requirements: medical insurance, dental insurance, vision insurance, flexible spending accounts, health savings accounts (HSA) with company contribution, 401(k) retirement plan with matching, employee stock purchase program, life insurance, AD&D, short-term disability insurance, long-term disability insurance, generous paid time off, company holidays, parental leave, identity theft protection, pet insurance, pre-paid legal insurance, back-up child and eldercare days, product discounts, referral bonus program, and more."
+              - paragraph [ref=e170]
+            - paragraph [ref=e171]: Pay Range
+            - paragraph [ref=e172]: $66,300 - $81,100 USD
+          - generic [ref=e173]:
+            - generic [ref=e174]:
+              - paragraph [ref=e175]:
+                - strong [ref=e176]: Our Culture
+              - paragraph [ref=e177]:
+                - text: At SharkNinja, we don’t just raise the bar—we push past it every single day.
+                - strong [ref=e178]: Our Outrageously Extraordinary mindset
+                - text: drives us to tackle the impossible, push boundaries, and deliver results that others only dream of. If you thrive on breaking out of your swim lane, you’ll be right at home.
+              - paragraph [ref=e179]:
+                - strong [ref=e180]: What We Offer
+              - paragraph [ref=e181]:
+                - text: We offer competitive health insurance, retirement plans, paid time off, employee stock purchase options, wellness programs, SharkNinja product discounts, and more.
+                - strong [ref=e182]: We empower your personal and professional growth
+                - text: with high impact Learning Programs featuring bold voices redefining what’s possible.
+                - strong [ref=e183]: When you join, you’re not just part of a company—you’re part of an outrageously extraordinary community.
+                - text: Together, we won’t just launch products—
+                - strong [ref=e184]: we’ll disrupt entire markets.
+              - paragraph [ref=e185]: At SharkNinja, Diversity, Equity, and Inclusion are vital to our global success. Valuing each unique voice and blending all of our diverse skills strengthens SharkNinja’s innovation every day. We support ALL associates in bringing their authentic selves to work, making an impact, and having the opportunity for career acceleration. With help from our leadership, associates, and our community, we aim to have equity be a key component of the SharkNinja DNA.
+              - paragraph [ref=e186]:
+                - text: "Learn more about us:"
+                - link:
+                  - /url: https://sharkninja.com/dei
+                - link "Life At SharkNinja" [ref=e187] [cursor=pointer]:
+                  - /url: https://www.instagram.com/sharkninja/
+                  - generic [ref=e188]: Life At SharkNinja
+                - link "Outrageously Extraordinary" [ref=e189] [cursor=pointer]:
+                  - /url: https://www.youtube.com/playlist?list=PLmRfBxyGu_mKl9SF12lM1NAIx-z07uLNQ
+                  - strong [ref=e190]:
+                    - generic [ref=e191]: Outrageously Extraordinary
+            - generic [ref=e192]:
+              - paragraph [ref=e193]:
+                - strong [ref=e194]: SharkNinja Candidate Privacy Notice
+              - list [ref=e195]:
+                - listitem [ref=e196]:
+                  - paragraph [ref=e197]:
+                    - text: For candidates based in
+                    - strong [ref=e198]: all regions
+                    - text: ", please refer to this"
+                    - link "Candidate Privacy Notice" [ref=e199] [cursor=pointer]:
+                      - /url: https://www.sharkninja.com/candidate-privacy-notice.html
+                    - text: .
+                - listitem [ref=e200]:
+                  - paragraph [ref=e201]:
+                    - text: For candidates based in
+                    - strong [ref=e202]: China
+                    - text: ", please refer to this"
+                    - link "Candidate Privacy Notice" [ref=e203] [cursor=pointer]:
+                      - /url: https://www.sharkninja.com/legal/candidate-privacy-notice-china.html
+                    - text: .
+                - listitem [ref=e204]:
+                  - paragraph [ref=e205]:
+                    - text: For candidates based in
+                    - strong [ref=e206]: Vietnam
+                    - text: ", please refer to this"
+                    - link "Candidate Privacy Notice" [ref=e207] [cursor=pointer]:
+                      - /url: https://www.sharkninja.com/legal/candidate-privacy-notice-vietnam.html
+                    - text: .
+            - generic [ref=e208]:
+              - paragraph [ref=e209]
+              - paragraph [ref=e210]:
+                - emphasis [ref=e212]:
+                  - text: We do not discriminate on the basis of race, religion, color, national origin, sex, gender, gender expression, sexual orientation, age, marital status, veteran status, disability, or any other class protected by legislation, and local law. SharkNinja will consider reasonable accommodations consistent with legislation, and local law. If you require a reasonable accommodation to participate in the job application or interview process, please contact SharkNinja People & Culture at
+                  - link "accommodations@sharkninja.com" [ref=e213] [cursor=pointer]:
+                    - /url: mailto:accommodations@sharkninja.com
+        - generic [ref=e214]:
+          - img [ref=e215]
+          - generic [ref=e217]:
+            - paragraph [ref=e218]: Create a Job Alert
+            - paragraph [ref=e219]: Interested in building your career at SharkNinja? Get future opportunities sent straight to your email.
+            - link "Create alert" [ref=e613] [cursor=pointer]:
+              - /url: https://my.greenhouse.io/users/sign_in?job_board=sharkninjaoperatingllc&source=job_alert_post
+      - separator [ref=e221]
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - generic [ref=e224]:
+            - heading "Apply for this job" [level=2] [ref=e226]
+            - generic [ref=e227]:
+              - paragraph [ref=e229]: "*"
+              - paragraph [ref=e230]: indicates a required field
+          - button "Autofill with MyGreenhouse" [ref=e233] [cursor=pointer]
+        - generic [ref=e234]:
+          - generic [ref=e235]:
+            - generic [ref=e238]:
+              - generic [ref=e239]: First Name*
+              - textbox "First Name" [ref=e240]
+            - generic [ref=e243]:
+              - generic [ref=e244]: Last Name*
+              - textbox "Last Name" [ref=e245]
+            - generic [ref=e248]:
+              - generic [ref=e249]: Email*
+              - textbox "Email" [ref=e250]
+            - group "Phone" [ref=e252]:
+              - generic [ref=e253]: Phone
+              - generic [ref=e256]:
+                - generic [ref=e257]: Country
+                - generic [ref=e258]:
+                  - log [ref=e260]
+                  - generic [ref=e262]:
+                    - combobox "Country" [ref=e265]
+                    - button "Toggle flyout" [ref=e267] [cursor=pointer]:
+                      - img [ref=e268]
+              - generic [ref=e272]:
+                - generic [ref=e273]: Phone
+                - textbox "Phone" [ref=e274]
+            - generic [ref=e275]:
+              - generic [ref=e277]:
+                - generic [ref=e278]: Location (City)*
+                - generic [ref=e279]:
+                  - log [ref=e281]
+                  - combobox "Location (City)" [ref=e286]
+                  - textbox
+              - button "Locate me" [ref=e287] [cursor=pointer]
+            - group "Resume/CV*" [ref=e289]:
+              - generic [ref=e290]: Resume/CV*
+              - generic [ref=e292]:
+                - generic [ref=e294]:
+                  - button "Attach" [ref=e295] [cursor=pointer]
+                  - generic [ref=e296]: Attach
+                  - button "Attach" [ref=e297]
+                - button "Dropbox" [ref=e299] [cursor=pointer]
+                - button "Google Drive" [ref=e301] [cursor=pointer]
+                - generic [ref=e303]:
+                  - button "Enter manually" [ref=e304] [cursor=pointer]
+                  - generic [ref=e305]: Enter manually
+                - paragraph [ref=e306]: "Accepted file types: pdf, doc, docx, txt, rtf"
+            - group "Cover Letter" [ref=e308]:
+              - generic [ref=e309]: Cover Letter
+              - generic [ref=e311]:
+                - generic [ref=e313]:
+                  - button "Attach" [ref=e314] [cursor=pointer]
+                  - generic [ref=e315]: Attach
+                  - button "Attach" [ref=e316]
+                - button "Dropbox" [ref=e318] [cursor=pointer]
+                - button "Google Drive" [ref=e320] [cursor=pointer]
+                - generic [ref=e322]:
+                  - button "Enter manually" [ref=e323] [cursor=pointer]
+                  - generic [ref=e324]: Enter manually
+                - paragraph [ref=e325]: "Accepted file types: pdf, doc, docx, txt, rtf"
+          - generic [ref=e326]:
+            - separator [ref=e327]
+            - generic [ref=e330]:
+              - generic [ref=e331]: LinkedIn Profile
+              - textbox "LinkedIn Profile" [ref=e332]
+            - generic [ref=e335]:
+              - generic [ref=e336]: Website
+              - textbox "Website" [ref=e337]
+            - generic [ref=e340]:
+              - generic [ref=e341]: Are you legally authorized to work in the United States?*
+              - generic [ref=e342]:
+                - log [ref=e344]
+                - generic [ref=e346]:
+                  - generic [ref=e347]:
+                    - generic [ref=e348]: Select...
+                    - combobox "Are you legally authorized to work in the United States?" [ref=e350]
+                  - button "Toggle flyout" [ref=e352] [cursor=pointer]:
+                    - img [ref=e353]
+                - textbox
+            - generic [ref=e357]:
+              - generic [ref=e358]: Will you now or in the future require sponsorship for employment visa status (e.g., H-1B visa status)?*
+              - generic [ref=e359]:
+                - log [ref=e361]
+                - generic [ref=e363]:
+                  - generic [ref=e364]:
+                    - generic [ref=e365]: Select...
+                    - combobox "Will you now or in the future require sponsorship for employment visa status (e.g., H-1B visa status)?" [ref=e367]
+                  - button "Toggle flyout" [ref=e369] [cursor=pointer]:
+                    - img [ref=e370]
+                - textbox
+            - generic [ref=e374]:
+              - generic [ref=e375]: Have you previously worked with us as an intern or co-op student at SharkNinja? *
+              - generic [ref=e376]:
+                - log [ref=e378]
+                - generic [ref=e380]:
+                  - generic [ref=e381]:
+                    - generic [ref=e382]: Select...
+                    - combobox "Have you previously worked with us as an intern or co-op student at SharkNinja?" [ref=e384]
+                  - button "Toggle flyout" [ref=e386] [cursor=pointer]:
+                    - img [ref=e387]
+                - textbox
+            - generic [ref=e391]:
+              - generic [ref=e392]: Are you comfortable to be in the office specified on the job description, 3 days a week?*
+              - generic [ref=e393]:
+                - log [ref=e395]
+                - generic [ref=e397]:
+                  - generic [ref=e398]:
+                    - generic [ref=e399]: Select...
+                    - combobox "Are you comfortable to be in the office specified on the job description, 3 days a week?" [ref=e401]
+                  - button "Toggle flyout" [ref=e403] [cursor=pointer]:
+                    - img [ref=e404]
+                - textbox
+            - generic [ref=e408]:
+              - generic [ref=e409]: What is your current company?*
+              - textbox "What is your current company?" [ref=e410]
+            - generic [ref=e413]:
+              - generic [ref=e414]: Are you subject to any noncompete nondisclosure/confidentiality agreement?*
+              - generic [ref=e415]:
+                - log [ref=e417]
+                - generic [ref=e419]:
+                  - generic [ref=e420]:
+                    - generic [ref=e421]: Select...
+                    - combobox "Are you subject to any noncompete nondisclosure/confidentiality agreement?" [ref=e423]
+                  - button "Toggle flyout" [ref=e425] [cursor=pointer]:
+                    - img [ref=e426]
+                - textbox
+            - generic [ref=e430]:
+              - generic [ref=e431]: I would like to receive updates from a recruiter about this job via SMS.*
+              - generic [ref=e432]:
+                - log [ref=e434]
+                - generic [ref=e436]:
+                  - generic [ref=e437]:
+                    - generic [ref=e438]: Select...
+                    - combobox "I would like to receive updates from a recruiter about this job via SMS." [ref=e440]
+                  - button "Toggle flyout" [ref=e442] [cursor=pointer]:
+                    - img [ref=e443]
+                - textbox
+            - generic [ref=e447]:
+              - generic [ref=e448]: How did you hear about us?*
+              - generic [ref=e449]:
+                - log [ref=e451]
+                - generic [ref=e453]:
+                  - generic [ref=e454]:
+                    - generic [ref=e455]: Select...
+                    - combobox "How did you hear about us?" [ref=e457]
+                  - button "Toggle flyout" [ref=e459] [cursor=pointer]:
+                    - img [ref=e460]
+                - textbox
+            - generic [ref=e464]:
+              - generic [ref=e465]: You can choose to receive recruitment marketing communications from us, including updates on job opportunities, career advice, and recruitment events. Select yes if you wish to receive email communications from our recruitment team. You can update your preferences or withdraw consent at any time. To learn more about how we handle your personal data including your rights, and how to opt out of marketing please visit ouhttps://sharkninja.com/candidate-privacy-notice/*
+              - generic [ref=e466]:
+                - log [ref=e468]
+                - generic [ref=e470]:
+                  - generic [ref=e471]:
+                    - generic [ref=e472]: Select...
+                    - combobox "You can choose to receive recruitment marketing communications from us, including updates on job opportunities, career advice, and recruitment events. Select yes if you wish to receive email communications from our recruitment team. You can update your preferences or withdraw consent at any time. To learn more about how we handle your personal data including your rights, and how to opt out of marketing please visit ouhttps://sharkninja.com/candidate-privacy-notice/" [ref=e474]
+                  - button "Toggle flyout" [ref=e476] [cursor=pointer]:
+                    - img [ref=e477]
+                - textbox
+          - separator [ref=e479]
+          - generic [ref=e480]:
+            - heading "U.S. Standard Demographic Questions" [level=3] [ref=e481]
+            - generic [ref=e483]:
+              - paragraph [ref=e484]:
+                - strong [ref=e485]: SharkNinja, Welcoming Everyone
+              - paragraph [ref=e486]: At SharkNinja, we take pride in our uniqueness. Our innovation extends beyond our products to the way we work, embracing diversity as a cornerstone of our success. We recognize that our differences make us stronger, more creative, and better at what we do. Our workforce should reflect the diversity of our customer base, which is why our recruitment commitment is to truly be an exemplary, equal opportunity employer, fostering a welcoming and inclusive workplace.
+              - paragraph [ref=e487]: We are looking for you as a valued candidate, to help us achieve our commitment by participating in this short questionnaire. You can choose if you want to complete the questions, if you do your answers will help us to ensure our hiring practices are inclusive, and in return we commit to treating the information you provide with respect by applying technical measures to your response to remove it from your candidate record.
+              - paragraph [ref=e488]:
+                - strong [ref=e489]: How will we use the data?
+              - paragraph [ref=e490]: None of the hiring team will have access to your responses, therefore the information you provide will NOT be used as part of your application process.
+              - paragraph [ref=e491]: The data will be used to report on our recruitment process and its success in supporting Diversity, Equality, and Inclusion.
+              - paragraph [ref=e492]:
+                - text: "You can review our privacy statement at this link:"
+                - link "Candidate Privacy Notice" [ref=e493] [cursor=pointer]:
+                  - /url: https://sharkninja.com/candidate-privacy-notice/
+                  - generic [ref=e494]: Candidate Privacy Notice
+                - text: .
+              - paragraph [ref=e495]:
+                - text: You can exercise your Data Subject Rights at any point during or after our recruitment process. For more information, please visit our Candidate Privacy Notice
+                - link "here" [ref=e496] [cursor=pointer]:
+                  - /url: https://sharkninja.com/candidate-privacy-notice/
+                  - generic [ref=e497]: here
+            - generic [ref=e499]:
+              - generic [ref=e500]: How would you describe your gender identity? (mark all that apply)
+              - generic [ref=e501]:
+                - log [ref=e503]
+                - generic [ref=e505]:
+                  - generic [ref=e506]:
+                    - generic [ref=e507]: Select...
+                    - combobox "How would you describe your gender identity? (mark all that apply)" [ref=e509]
+                  - button "Toggle flyout" [ref=e511] [cursor=pointer]:
+                    - img [ref=e512]
+            - generic [ref=e515]:
+              - generic [ref=e516]: How would you describe your racial/ethnic background? (mark all that apply)
+              - generic [ref=e517]:
+                - log [ref=e519]: Southeast Asian, 8 of 11.11 results available.Use Up and Down to choose options, press Enter to select the currently focused option, press Escape to exit the menu, press Tab to select the option and exit the menu.
+                - generic [ref=e521]:
+                  - generic [ref=e522]:
+                    - generic [ref=e523]: Select...
+                    - combobox "How would you describe your racial/ethnic background? (mark all that apply)" [expanded] [active] [ref=e525]
+                  - button "Toggle flyout" [ref=e527] [cursor=pointer]:
+                    - img [ref=e528]
+                - listbox [ref=e619]:
+                  - option "Black or of African descent" [ref=e620]
+                  - option "East Asian" [ref=e621]
+                  - option "Hispanic, Latinx or of Spanish Origin" [ref=e622]
+                  - option "Indigenous, American Indian or Alaska Native" [ref=e623]
+                  - option "Middle Eastern or North African" [ref=e624]
+                  - option "Native Hawaiian or Pacific Islander" [ref=e625]
+                  - option "South Asian" [ref=e626]
+                  - option "Southeast Asian" [ref=e627]
+                  - option "White or European" [ref=e628]
+                  - option "I prefer to self-describe" [ref=e629]
+                  - option "I don't wish to answer" [ref=e630]
+            - generic [ref=e531]:
+              - generic [ref=e532]: How would you describe your sexual orientation? (mark all that apply)
+              - generic [ref=e533]:
+                - log [ref=e535]
+                - generic [ref=e537]:
+                  - generic [ref=e538]:
+                    - generic [ref=e539]: Select...
+                    - combobox "How would you describe your sexual orientation? (mark all that apply)" [ref=e541]
+                  - button "Toggle flyout" [ref=e543] [cursor=pointer]:
+                    - img [ref=e544]
+            - generic [ref=e547]:
+              - generic [ref=e548]: Do you identify as transgender?
+              - generic [ref=e549]:
+                - log [ref=e551]
+                - generic [ref=e553]:
+                  - generic [ref=e554]:
+                    - generic [ref=e555]: Select...
+                    - combobox "Do you identify as transgender?" [ref=e557]
+                  - button "Toggle flyout" [ref=e559] [cursor=pointer]:
+                    - img [ref=e560]
+            - generic [ref=e563]:
+              - generic [ref=e564]: Do you have a disability or chronic condition (physical, visual, auditory, cognitive, mental, emotional, or other) that substantially limits one or more of your major life activities, including mobility, communication (seeing, hearing, speaking), and learning?
+              - generic [ref=e565]:
+                - log [ref=e567]
+                - generic [ref=e569]:
+                  - generic [ref=e570]:
+                    - generic [ref=e571]: Select...
+                    - combobox "Do you have a disability or chronic condition (physical, visual, auditory, cognitive, mental, emotional, or other) that substantially limits one or more of your major life activities, including mobility, communication (seeing, hearing, speaking), and learning?" [ref=e573]
+                  - button "Toggle flyout" [ref=e575] [cursor=pointer]:
+                    - img [ref=e576]
+            - generic [ref=e579]:
+              - generic [ref=e580]: Are you a veteran or active member of the United States Armed Forces?
+              - generic [ref=e581]:
+                - log [ref=e583]
+                - generic [ref=e585]:
+                  - generic [ref=e586]:
+                    - generic [ref=e587]: Select...
+                    - combobox "Are you a veteran or active member of the United States Armed Forces?" [ref=e589]
+                  - button "Toggle flyout" [ref=e591] [cursor=pointer]:
+                    - img [ref=e592]
+          - separator [ref=e594]
+          - button "Submit application" [ref=e596] [cursor=pointer]
+  - contentinfo [ref=e597]:
+    - generic [ref=e598]:
+      - paragraph [ref=e599]: Powered by
+      - link "Greenhouse logo" [ref=e600] [cursor=pointer]:
+        - /url: https://www.greenhouse.com
+        - img "Greenhouse logo" [ref=e601]
+  - iframe [ref=e633]:
+    - generic [ref=f6e2]:
+      - generic [ref=f6e5]:
+        - link "Privacy" [ref=f6e6] [cursor=pointer]:
+          - /url: https://www.google.com/intl/en/policies/privacy/
+        - text: "-"
+        - link "Terms" [ref=f6e7] [cursor=pointer]:
+          - /url: https://www.google.com/intl/en/policies/terms/
+      - generic [ref=f6e8]:
+        - generic [ref=f6e9]:
+          - text: protected by
+          - strong [ref=f6e10]: reCAPTCHA
+        - generic [ref=f6e11]: "-"

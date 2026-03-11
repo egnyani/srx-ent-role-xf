@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+# output/*.xlsx  ← allow Excel to be committed so GitHub Actions can update it
+~$*.xlsx
+~$*

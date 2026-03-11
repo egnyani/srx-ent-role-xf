@@ -1,0 +1,218 @@
+{
+  "job": {
+    "company_name": "WAL MART ASSOCIATES INC",
+    "job_title": "DTC Fulfillment Analyst ",
+    "url": "https://job-boards.greenhouse.io/sharkninjaoperatingllc/jobs/4660995006",
+    "apply_target": "greenhouse"
+  },
+  "generated_at": "2026-03-10T20:32:11Z",
+  "resolved_fields": [
+    {
+      "field_key": "first_name",
+      "label": "First Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Gnyani",
+      "source": "identity.first_name"
+    },
+    {
+      "field_key": "last_name",
+      "label": "Last Name",
+      "field_type": "text",
+      "required": true,
+      "value": "Enugandula",
+      "source": "identity.last_name"
+    },
+    {
+      "field_key": "email",
+      "label": "Email",
+      "field_type": "text",
+      "required": true,
+      "value": "gnyenug@gmail.com",
+      "source": "identity.email"
+    },
+    {
+      "field_key": "country",
+      "label": "Country",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "phone",
+      "label": "Phone",
+      "field_type": "tel",
+      "required": false,
+      "value": "+1 (315) 766-9099",
+      "source": "identity.phone"
+    },
+    {
+      "field_key": "candidate-location",
+      "label": "Location (City)",
+      "field_type": "text",
+      "required": true,
+      "value": "Syracuse, New York",
+      "source": "preferences.application_city_override"
+    },
+    {
+      "field_key": "resume",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "data/documents/Gnyani_Enugandula_Resume.pdf",
+      "source": "documents.resume_path"
+    },
+    {
+      "field_key": "cover_letter",
+      "label": "Attach",
+      "field_type": "file",
+      "required": false,
+      "value": "",
+      "source": "documents.cover_letter_path"
+    },
+    {
+      "field_key": "question_8284405006",
+      "label": "LinkedIn Profile",
+      "field_type": "text",
+      "required": false,
+      "value": "https://www.linkedin.com/in/gnyani-enugandula-6a0149262/",
+      "source": "identity.linkedin_url"
+    },
+    {
+      "field_key": "question_8284406006",
+      "label": "Website",
+      "field_type": "text",
+      "required": false,
+      "value": "https://gnyani.vercel.app/",
+      "source": "identity.portfolio_url"
+    },
+    {
+      "field_key": "question_8284407006",
+      "label": "Are you legally authorized to work in the United States?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.work_authorization"
+    },
+    {
+      "field_key": "question_8284408006",
+      "label": "Will you now or in the future require sponsorship for employment visa status (e.g., H-1B visa status)?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.sponsorship_needed"
+    },
+    {
+      "field_key": "question_8284410006",
+      "label": "Are you comfortable to be in the office specified on the job description, 3 days a week?",
+      "field_type": "text",
+      "required": true,
+      "value": "Yes",
+      "source": "agent_instructions.default_question_answers.relocation"
+    },
+    {
+      "field_key": "4006105006",
+      "label": "How would you describe your gender identity? (mark all that apply)",
+      "field_type": "text",
+      "required": false,
+      "value": "Female",
+      "source": "eeo.gender"
+    },
+    {
+      "field_key": "4006106006",
+      "label": "How would you describe your racial/ethnic background? (mark all that apply)",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "4006107006",
+      "label": "How would you describe your sexual orientation? (mark all that apply)",
+      "field_type": "text",
+      "required": false,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "4006108006",
+      "label": "Do you identify as transgender?",
+      "field_type": "text",
+      "required": false,
+      "value": "Female",
+      "source": "eeo.gender"
+    },
+    {
+      "field_key": "4006109006",
+      "label": "Do you have a disability or chronic condition (physical, visual, auditory, cognitive, mental, emotional, or other) that substantially limits one or more of your major life activities, including mobility, communication (seeing, hearing, speaking), and learning?",
+      "field_type": "text",
+      "required": false,
+      "value": "false",
+      "source": "eeo.disability_status"
+    },
+    {
+      "field_key": "4006110006",
+      "label": "Are you a veteran or active member of the United States Armed Forces?",
+      "field_type": "text",
+      "required": false,
+      "value": "false",
+      "source": "eeo.veteran_status"
+    }
+  ],
+  "unresolved_fields": [
+    {
+      "field_key": "question_8284409006",
+      "label": "Have you previously worked with us as an intern or co-op student at SharkNinja?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_8284411006",
+      "label": "What is your current company?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_8284412006",
+      "label": "Are you subject to any noncompete nondisclosure/confidentiality agreement?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_8284413006",
+      "label": "I would like to receive updates from a recruiter about this job via SMS.",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_8284414006",
+      "label": "How did you hear about us?",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    },
+    {
+      "field_key": "question_8284415006",
+      "label": "You can choose to receive recruitment marketing communications from us, including updates on job opportunities, career advice, and recruitment events. Select yes if you wish to receive email communications from our recruitment team.\u202f\u202f You can update your preferences or withdraw consent at any time. To learn more about how we handle your personal data \u202fincluding your rights, and how to opt out of marketing please visit ouhttps://sharkninja.com/candidate-privacy-notice/",
+      "field_type": "text",
+      "required": true,
+      "value": "",
+      "source": ""
+    }
+  ],
+  "notes": [
+    "Authorized to work in the US for the next 2.5 years without sponsorship; sponsorship will be needed after that to continue.",
+    "If Workday adds the project as a 4th experience entry, delete that extra experience before submitting.",
+    "Pay attention to month/day/year date formatting in application forms."
+  ]
+}

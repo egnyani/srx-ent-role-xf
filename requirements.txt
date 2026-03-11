@@ -1,0 +1,8 @@
+requests
+beautifulsoup4
+openpyxl
+resend
+tavily-python
+phonenumbers
+rapidfuzz
+openai>=1.0.0

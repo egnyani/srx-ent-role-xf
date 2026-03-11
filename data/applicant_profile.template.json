@@ -1,0 +1,107 @@
+{
+  "identity": {
+    "first_name": "Gnyani",
+    "last_name": "Enugandula",
+    "email": "gnyenug@gmail.com",
+    "phone": "+1 (315) 766-9099",
+    "address_line_1": "201 Comstock Ave",
+    "location_city": "Syracuse",
+    "location_state": "New York",
+    "postal_code": "13210",
+    "country": "United States",
+    "linkedin_url": "https://www.linkedin.com/in/gnyani-enugandula-6a0149262/",
+    "github_url": "https://github.com/egnyani",
+    "portfolio_url": "https://gnyani.vercel.app/"
+  },
+  "work_authorization": {
+    "authorized_to_work_in_us": true,
+    "requires_future_sponsorship": true,
+    "currently_requires_sponsorship": false,
+    "security_clearance": "none",
+    "current_visa_status": "F1 OPT",
+    "work_authorization_note": "Authorized to work in the US for the next 2.5 years without sponsorship; sponsorship will be needed after that to continue."
+  },
+  "education": {
+    "school": "Syracuse University",
+    "degree": "Master of Science",
+    "major": "Information Systems",
+    "graduation_month": "May",
+    "graduation_year": "2025",
+    "history": [
+      {
+        "school": "Syracuse University",
+        "degree": "Master of Science",
+        "degree_full": "Masters in Science in Information Systems",
+        "major": "Information Systems",
+        "start_month": "Aug",
+        "start_year": "2023",
+        "end_month": "May",
+        "end_year": "2025",
+        "closest_degree_ok": true,
+        "gpt_option": ""
+      },
+      {
+        "school": "Sreenidhi Institute of Science and Technology",
+        "degree": "Bachelor of Engineering",
+        "degree_full": "Bachelors in Engineering in Electronics Engineering",
+        "major": "Electronics Engineering",
+        "start_month": "Aug",
+        "start_year": "2019",
+        "end_month": "May",
+        "end_year": "2023",
+        "closest_degree_ok": true,
+        "gpt_option": ""
+      }
+    ]
+  },
+  "documents": {
+    "resume_path": "data/documents/Gnyani_Enugandula_Resume.pdf",
+    "cover_letter_path": "data/documents/Gnyani_Enugandula_Cover_Letter.pdf"
+  },
+  "preferences": {
+    "remote_ok": true,
+    "hybrid_ok": true,
+    "onsite_ok": true,
+    "preferred_locations": [],
+    "willing_to_relocate": true,
+    "application_city_override": "Syracuse, New York, United States",
+    "application_state_override": "New York"
+  },
+  "eeo": {
+    "gender": "Woman",
+    "ethnicity": "South Asian",
+    "hispanic_latino": "No",
+    "sexual_orientation": "Heterosexual",
+    "transgender": "No",
+    "veteran_status": "No",
+    "disability_status": "No"
+  },
+  "custom_answers": {
+    "current_company": "RELI Group Inc.",
+    "salary_expectations": "90000",
+    "why_company_default": "",
+    "notice_period": "2 weeks"
+  },
+  "agent_instructions": {
+    "simplify_login_email": "gnyenug@gmail.com",
+    "workday_profile_note": "If Workday adds the project as a 4th experience entry, delete that extra experience before submitting.",
+    "date_format_note": "Pay attention to month/day/year date formatting in application forms.",
+    "default_question_answers": {
+      "worked_here_before": "No",
+      "relocation": "Yes",
+      "work_authorization": "Yes",
+      "sponsorship_needed": "Yes",
+      "noncompete": "No",
+      "sms_updates": "Yes",
+      "heard_about_company": "Career Fair",
+      "recruitment_marketing_emails": "Yes",
+      "security_clearance": "No",
+      "veteran_status": "No"
+    },
+    "ai_fallback": {
+      "enabled": true,
+      "provider": "groq",
+      "model": "llama-3.3-70b-versatile"
+    }
+  }
+}
