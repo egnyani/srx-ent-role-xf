@@ -1,6 +1,6 @@
-# Entry-Level SWE Job Scraper
+# Job Scraper
 
-Python scraper for finding US-based entry-level software engineering roles across a large company list, exporting them to Excel, and optionally sending an email digest when new jobs appear.
+Python scraper for finding roles across a large company list, exporting them to Excel, and optionally sending an email digest when new jobs appear.
 
 ## What It Does
 
