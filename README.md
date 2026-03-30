@@ -59,7 +59,6 @@ Install dependencies:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-npm install
 ```
 
 Optional Playwright setup:
@@ -201,8 +200,6 @@ Files:
 
 - `data/apply_queue.json`: queued jobs for later application work
 - `data/applicant_profile.template.json`: profile template for reusable application answers
-- `data/resume_data.json`: structured resume content used to render a PDF
-- `output/generated_documents/`: generated resume PDFs for uploads
 
 Details are in `docs/APPLY_AGENT_SETUP.md`.
 

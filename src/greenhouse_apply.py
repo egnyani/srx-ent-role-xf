@@ -13,7 +13,6 @@ from bs4 import BeautifulSoup
 import requests
 
 from .http_client import FetchError, get
-from .resume_documents import ensure_resume_pdf
 
 SESSION_DIR = Path("output/apply_sessions")
 
@@ -188,7 +187,7 @@ def answer_for_field(field: dict, profile: dict) -> tuple[str, str]:
     if key == "candidate-location":
         return _candidate_location_value(profile), "preferences.application_city_override"
     if key == "resume":
-        return ensure_resume_pdf(profile), "documents.resume_path"
+        return docs.get("resume_path", ""), "documents.resume_path"
     if key == "cover_letter":
         return docs.get("cover_letter_path", ""), "documents.cover_letter_path"
 

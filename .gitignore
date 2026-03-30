@@ -3,8 +3,6 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-node_modules/
-output/generated_documents/
 # output/*.xlsx  ← allow Excel to be committed so GitHub Actions can update it
 ~$*.xlsx
 ~$*
