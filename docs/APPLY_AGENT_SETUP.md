@@ -98,12 +98,14 @@ Start with a supervised local agent that:
 The first runnable apply step is now:
 
 ```bash
+python scripts/generate_resume_pdf.py
 python scripts/run_greenhouse_apply.py
 python scripts/fill_greenhouse_form.py
 ```
 
 That command:
 
+- generates `output/generated_documents/Gnyani_Enugandula_Resume.pdf` from `data/resume_data.json` when the form needs a resume upload
 - selects the next queued Greenhouse job
 - fetches the live Greenhouse application form
 - maps saved profile answers to known fields
@@ -172,6 +174,11 @@ When we start the actual apply flow, we will need values for:
 - sponsorship answer
 - relocation preference
 - salary expectation default
+
+The resume PDF now comes from two profile-linked paths:
+
+- `documents.resume_data_path`: structured JSON content for the resume renderer
+- `documents.resume_path`: generated PDF path used for form uploads
 
 Keep secrets and credentials out of the repo. Use local environment variables, OS keychain storage, or a local secret manager when we reach the browser automation phase.
 

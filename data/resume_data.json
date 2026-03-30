@@ -1,0 +1,87 @@
+{
+  "contact": {
+    "name": "Gnyani Enugandula",
+    "phone": "+1 (315) 766-9099",
+    "email": "gnyenug@gmail.com",
+    "linkedin": "linkedin.com/in/gnyani-enugandula-6a0149262",
+    "github": "github.com/egnyani"
+  },
+  "summary": [
+    "AI-focused Software Engineer with 2+ years of experience delivering production software across Python backends and React-heavy frontends, spanning consumer marketplaces, enterprise platforms, and financial systems.",
+    "Strong backend focus on API design, data modeling, and real-time workflows, using PostgreSQL, DynamoDB, and AWS to support high-traffic, latency-sensitive applications.",
+    "Hands-on experience applying GenAI in production, including LLM-based classification, RAG pipelines, and AI-assisted decision flows, integrated into real business processes.",
+    "Proven ability to ship reliable systems through CI/CD automation, cloud deployment, and monitoring, improving release speed, system stability, and developer feedback loops."
+  ],
+  "experience": [
+    {
+      "id": "reli-sde",
+      "company": "RELI Group Inc.",
+      "title": "Software Developer",
+      "location": "Syracuse, NY",
+      "start": "Oct 2025",
+      "end": "Present",
+      "bullets": [
+        "Developed the customer-facing web app from scratch using React + Material UI with a Node.js (Express) backend, supporting end-to-end kitchen discovery and booking flows used by live food sellers.",
+        "Designed backend APIs in Python with DynamoDB, handling kitchen availability, pricing rules, and booking state while keeping response times under 300 ms for core flows.",
+        "Set up automated build and deployment using GitHub Actions + AWS, cutting manual release effort and reducing average deployment time from 30 minutes to under 10 minutes.",
+        "Implemented an AI-based kitchen matching flow using Python + LLM APIs, ranking kitchens by location, availability, and seller requirements, which reduced manual kitchen shortlisting by 40%.",
+        "Architected an early RAG prototype using Python, embeddings, and vector search to answer seller queries about kitchen rules and onboarding steps, lowering support follow-ups during onboarding by 25%."
+      ]
+    },
+    {
+      "id": "reli-intern",
+      "company": "RELI Group Inc.",
+      "title": "Software Developer Intern",
+      "location": "Syracuse, NY",
+      "start": "Feb 2025",
+      "end": "Sept 2025",
+      "bullets": [
+        "Designed Python-based backend services to ingest and normalize large-scale tax and financial documents, processing millions of records each filing season with validation rules aligned to compliance workflows.",
+        "Implemented LLM-driven classification and data extraction pipelines in Python, orchestrated through AWS Lambda and SQS, reducing manual review effort for tax operations teams by 32% during peak periods.",
+        "Developed an internal RAG service using Python, embeddings, and vector search on AWS-managed storage, enabling fast retrieval of tax policy guidance, cutting analyst lookup time from minutes to seconds.",
+        "Integrated AI services with core platform APIs using REST APIs deployed on AWS (API Gateway, ECS), enforcing IAM-based access controls, audit logging, and stable latency under seasonal traffic spikes.",
+        "Added production monitoring and safety fallbacks using CloudWatch metrics and Python-based confidence checks, lowering incorrect AI-assisted suggestions by 18% during high-volume filings."
+      ]
+    },
+    {
+      "id": "acmesia",
+      "company": "Acmesia Consultants LLP",
+      "title": "Software Engineer",
+      "location": "Mumbai, India",
+      "start": "May 2022",
+      "end": "Jul 2024",
+      "bullets": [
+        "Delivered modular enterprise applications using Python (Django), React with TypeScript, and PostgreSQL, supporting 100K+ monthly transactions while maintaining 99.95% uptime for client-facing workflows.",
+        "Reworked release and environment workflows through Git-based CI/CD and AWS, cutting average deployment time from 45 minutes to 7 minutes and reducing rollback incidents during peak releases.",
+        "Developed REST and GraphQL APIs using Django REST Framework and Node.js (Express) to replace manual business operations, saving an estimated 5,000+ client labor hours annually.",
+        "Implemented a real-time logistics and shipment tracking system using Python, Flask, WebSockets, and PostgreSQL, enabling live visibility across 15+ countries and lowering delivery delays by 42%.",
+        "Delivered executive reporting dashboards using React and Recharts backed by Django APIs, consolidating fragmented data sources and improving reporting accuracy from 68% to 99.6%."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science in Information Systems",
+      "school": "Syracuse University",
+      "location": "Syracuse, NY",
+      "start": "Aug 2023",
+      "end": "May 2025"
+    },
+    {
+      "degree": "Bachelor of Engineering in Electronics Engineering",
+      "school": "Mumbai University -- Ramrao Adik Institute of Technology",
+      "location": "Mumbai, India",
+      "start": "Aug 2019",
+      "end": "Jul 2023"
+    }
+  ],
+  "skills": {
+    "Backend Technologies": ["Python", "Java", "C#", "Node.js", "Express.js", "GraphQL", "Apache Kafka", "REST APIs", "Maven", "Flask", "Django"],
+    "Frontend Technologies": ["HTML", "CSS", "JavaScript", "TypeScript", "ReactJS", "Redux", "Next.js", "Material UI", "Webpack", "Recharts"],
+    "Database Management": ["PostgreSQL", "MySQL", "MongoDB", "DynamoDB", "Redis", "NoSQL Concepts", "Data Modeling", "Database Indexing", "Query Optimization", "Database Migrations", "ETL"],
+    "Cloud Platforms": ["AWS (Lambda, ECS, API Gateway, SQS, CloudWatch, IAM)", "Docker", "Containerization", "Serverless Deployments", "Load Balancing", "Auto Scaling", "CI/CD Pipelines"],
+    "AI / ML Integration": ["NumPy", "Pandas", "PyTorch", "LangChain", "LLM APIs", "Text Embeddings", "Retrieval-Augmented Generation (RAG)", "Ranking Logic", "Feature Engineering", "WebSockets"],
+    "Testing and Automation": ["Unit Testing", "Integration Testing", "API Testing", "End-to-End Testing", "Automated Testing", "Reliable Releases", "Git", "GitHub Actions", "Jenkins", "CI/CD Automation", "Jira", "Agile/Scrum"]
+  },
+  "projects": []
+}

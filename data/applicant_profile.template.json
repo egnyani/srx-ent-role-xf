@@ -55,7 +55,8 @@
     ]
   },
   "documents": {
-    "resume_path": "data/documents/Gnyani_Enugandula_Resume.pdf",
+    "resume_data_path": "data/resume_data.json",
+    "resume_path": "output/generated_documents/Gnyani_Enugandula_Resume.pdf",
     "cover_letter_path": "data/documents/Gnyani_Enugandula_Cover_Letter.pdf"
   },
   "preferences": {
